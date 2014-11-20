@@ -1,4 +1,6 @@
 CS3380_GroupProject
 ===================
 
-Web app for Tony's Pizza
+Web app for Tonys Pizza
+
+Testing out if git works or not.
