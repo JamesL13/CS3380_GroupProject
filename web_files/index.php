@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 
@@ -32,7 +33,7 @@
 </head>
 <body>
     <div class="TonysBanner">
-		<img id="TonysImg" src="images/TonysPizzaBanner.png" alt="Tonys" height="82px" width="644px">
+		<img id="TonysImg" src="images/TonysPizza.png" alt="Tonys" height="82px" width="644px">
 	</div>
     <div class="col-md-12">
     <nav class="navbar navbar-inverse" role="navigation">
@@ -52,10 +53,8 @@
             <div class="collapse navbar-collapse" id=".navbar-collapse">
                 <ul class="nav navbar-nav navbar-center">
                     <li><a href="Order.php">Order Now</a></li>
-
-
-
                     <li><a href="AboutUs.html">About Us</a></li>
+		    <li><a href="logout.php">Logout</a></li>
                 </ul>
                 <!--</ul>-->
             </div> <!-- /.navbar-collapse -->
@@ -76,5 +75,3 @@
     </div><!--col-md-12-->
 </body>
 </html>
-
-

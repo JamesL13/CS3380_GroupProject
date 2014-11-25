@@ -1,4 +1,16 @@
-﻿<!DOCTYPE html>
+﻿<?php
+session_start();
+
+if(($_SERVER['HTTPS']!=="on"))
+{
+        $redir = "https://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+        header("Location: $redir");
+}
+if(empty($_SESSION['username'])){
+        header("Location: login.php");
+}
+?>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
@@ -19,7 +31,7 @@
 </head>
 <body>
     <div class="TonysBanner">
-        <img id="TonysImg" src="images/TonysPizzaBanner.png" alt="Tonys" height="82px" width="644px">
+        <img id="TonysImg" src="images/TonysPizza.png" alt="Tonys" height="82px" width="644px">
     </div>
     <div class="col-md-12">
         <nav class="navbar navbar-inverse" role="navigation">
@@ -41,6 +53,7 @@
                         <li><a href="#">Order Now</a></li>
 
                         <li><a href="AboutUs.html">About Us</a></li>
+			<li><a href="logout.php">Logout</a></li>
                     </ul>
                     <!--</ul>-->
                 </div> <!-- /.navbar-collapse -->

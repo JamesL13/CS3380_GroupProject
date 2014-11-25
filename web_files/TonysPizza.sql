@@ -6,6 +6,31 @@ SET search_path = TonysPizza, public;
 --
 -- Table structures
 --
+DROP TABLE IF EXISTS tonyspizza.user_info;
+CREATE TABLE tonyspizza.user_info (
+	username 		VARCHAR(30) PRIMARY KEY,
+	registration_date 	TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	description 		VARCHAR(500)
+);
+
+DROP TABLE IF EXISTS tonyspizza.authentication;
+CREATE TABLE tonyspizza.authentication (
+	username 	VARCHAR(30) PRIMARY KEY,
+	password_hash 	CHAR(40) NOT NULL,
+	salt 		CHAR(40) NOT NULL,
+	FOREIGN KEY (username) REFERENCES tonyspizza.user_info(username)
+);
+
+DROP TABLE IF EXISTS tonyspizza.log;
+CREATE TABLE tonyspizza.log (
+	log_id  	SERIAL PRIMARY KEY,
+	username 	VARCHAR(30) NOT NULL REFERENCES tonyspizza.user_info,
+	ip_address 	VARCHAR(15) NOT NULL,
+	log_date 	TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	action 		VARCHAR(50) NOT NULL
+);
+
+CREATE INDEX log_log_id_index ON tonyspizza.log (username);
 
 DROP TABLE IF EXISTS appetizers;
 CREATE TABLE appetizers (
