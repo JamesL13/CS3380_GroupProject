@@ -58,3 +58,8 @@ ul.nav a:hover {
 a:hover {
   color: #FFFFFF !important;
 }
+
+
+iframe {
+    background: white;
+}
