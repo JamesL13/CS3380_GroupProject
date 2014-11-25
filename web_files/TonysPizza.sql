@@ -10,6 +10,7 @@ DROP TABLE IF EXISTS tonyspizza.user_info;
 CREATE TABLE tonyspizza.user_info (
 	username 		VARCHAR(30) PRIMARY KEY,
 	registration_date 	TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	phone_number            VARCHAR(20) NOT NULL,
 	description 		VARCHAR(500)
 );
 

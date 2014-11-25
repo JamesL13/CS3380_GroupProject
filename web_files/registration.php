@@ -18,10 +18,14 @@ if(($_SERVER['HTTPS']!=="on"))
 	<form method="POST">
 		<!-- input for username -->
 		<div>
-			<label for="username">Admin Email:</label>
+			<label for="username">User Name:</label>
 			<input type="text" id="username" name="username"/>
 		</div>
-		
+		<div>
+                        <label for="phoneNumber">Phone Number:</label>
+                        <input type="text" id="phone_number" name="phone_number"/>
+                </div>
+
 		<!-- two inputs for pw, used to verify pw is correct when registering -->
 		<div>
 			<label for="pass">Enter Password:    </label>
@@ -31,6 +35,7 @@ if(($_SERVER['HTTPS']!=="on"))
 			<label for="verifyPass">ReEnter Password:    </label>
 			<input type="password" name="verifyPass" required/>
 		</div>
+
 		
 		<!-- button to submit data -->
 		<div>
@@ -56,15 +61,13 @@ if(($_SERVER['HTTPS']!=="on"))
 			$pwhash = sha1($salt . $_POST['pass']);//concatenate random number and the password. salt the result
 			
 			//insert the username into user_info first
-			$query = "INSERT INTO tonyspizza.user_info (username) VALUES ($1)";
+			$query = "INSERT INTO tonyspizza.user_info (username, phone_number) VALUES ($1, $2)";
 			$stmt = pg_prepare($conn, "user_info", $query);
-			echo 'Unable to execute:' . pg_last_error($conn);
 			//sends query to database
-			$result = pg_execute($conn, "user_info", array($_POST['username']));
+			$result = pg_execute($conn, "user_info", array($_POST['username'], $_POST['phone_number']));
 			//if database doesnt return results print this
 			if(!$result) {
-				echo 'Unable to execute: ' . pg_last_error($conn);
-				echo '<br /><br />Unable to add credenials<br />';
+				echo '<br /><br />User Name already exists! Please try again.<br />';
 				echo 'Return to <a href="registration.php">Registration page</a>';
 				break;
 			}
@@ -76,7 +79,6 @@ if(($_SERVER['HTTPS']!=="on"))
 			$result = pg_execute($conn, "authentication", array($_POST['username'], $pwhash, $salt));
 			//if database doesnt return results print this
 			if(!$result) {
-				echo 'Unable to execute: ' . pg_last_error($conn);
 				echo '<br /><br />Unable to add credenials<br />';
 				echo 'Return to <a href="registration.php">Registration page</a>';
 				break;
@@ -89,7 +91,6 @@ if(($_SERVER['HTTPS']!=="on"))
 			$result = pg_execute($conn, "log", array($_POST['username'], $_SERVER['REMOTE_ADDR'], "register"));
 			//if database doesnt return results print this
 			if(!$result) {
-				echo 'Unable to execute: ' . pg_last_error($conn);
 				echo '<br /><br />Unable to add credenials<br />';
 				echo 'Return to <a href="registration.php">Registration page</a>';
 				break;
