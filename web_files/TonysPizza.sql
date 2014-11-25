@@ -51,8 +51,9 @@ DROP TABLE IF EXISTS size_pizza;
 CREATE TABLE size_pizza(
 	id SERIAL PRIMARY KEY,
 	crust_size int NOT NULL,
-	size_price float(6) NOT NULL,
-	topping_price float(4) NOT NULL
+	cheese_only_price float(6) NOT NULL,
+	single_topping_price float(6) NOT NULL,
+	additional_topping_price float(6) NOT NULL
 );
 
 DROP TABLE IF EXISTS toppings;
@@ -127,13 +128,14 @@ INSERT INTO crust VALUES (default,'thin crust');
 --
 --INSERT values into size_pizza
 --
-INSERT INTO size_pizza VALUES(default, 10, 10.95, 1.20);
-INSERT INTO size_pizza VALUES(default, 12, 12.65, 1.50);
-INSERT INTO size_pizza VALUES(default, 14, 14.45, 1.75);
+INSERT INTO size_pizza VALUES(default, 10, 9.95, 10.95, 1.20);
+INSERT INTO size_pizza VALUES(default, 12, 10.95, 12.65, 1.50);
+INSERT INTO size_pizza VALUES(default, 14, 11.95, 14.45, 1.75);
 
 --
 --INSERT values into toppings
 --
+
 INSERT INTO toppings VALUES(default, 'onion');
 INSERT INTO toppings VALUES(default, 'mushroom');
 INSERT INTO toppings VALUES(default, 'canadian bacon');

@@ -113,7 +113,7 @@ if(empty($_SESSION['username'])){
 </html>
 
 <?php
-include "../secure/database.php";
+include "../../secure/database.php";
 
 //Connect to Database using my credentials
 $conn = pg_connect(HOST." ".DBNAME." ".USERNAME." ".PASSWORD);
