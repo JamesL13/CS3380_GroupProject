@@ -60,6 +60,11 @@ if(empty($_SESSION['username'])){
             </div><!-- /.container-fluid -->
     </div><!--col-md-12-->
     </nav>
+    <div>
+    <iframe src="CurrentOrder.php">
+
+    </iframe>
+    </div>
     <div id="OrderBox">
     <div>
         <form method="POST" action="Order.php">
@@ -108,10 +113,6 @@ if(empty($_SESSION['username'])){
         </form>
     </div>
     </div><!--Order Box-->
-    <iframe src="http://www.w3schools.com">
-
-    </iframe>
-
 </body>
 </html>
 
