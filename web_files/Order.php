@@ -408,7 +408,7 @@ if(isset($_POST['submit']))
 }
 
 echo "display";
-$query = "SELECT * FROM tonyspizza.orders ORDER BY phone_number;";
+$query = "SELECT * FROM tonyspizza.orders WHERE phone_number = '$phone_number' ORDER BY phone_number;";
         //function call to print results of query
 
         $result = pg_query($query) or die("Query failed: " . pg_last_error());
