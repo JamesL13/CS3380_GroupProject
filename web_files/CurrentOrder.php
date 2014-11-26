@@ -24,5 +24,3 @@
 	TEST
 	</div>
 </body>
-
-</html>
