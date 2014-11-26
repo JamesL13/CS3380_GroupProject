@@ -137,18 +137,18 @@ if(empty($_SESSION['username'])){
 
             <hr><!--Dividing Line-->
 	<h3>Appetizers</h3>
-	    <input type="checkbox" name="Onion Rings" value="Onion_Rings">Onion Rings<br />
-	    <input type="checkbox" name="Fried Mushrooms" value="Fried_Mushrooms">Fried Mushrooms<br />
-	    <input type="checkbox" name="Mozzarella Cheese Sticks" value="Mozzarella_Cheese_Sticks">Mozzarella Cheese Sticks<br />
-	    <input type="checkbox" name="Spicy Buffalo Wings" value="Spicy_Buffalo_Wings">Spicy Buffalo Wings<br />
-	    <input type="checkbox" name="Toasted Beef Ravioli" value="Toasted_Beef_Ravioli">Toasted Beef Ravioli<br />
+	    <input type="checkbox" name="appetizer[]" value="Onion Rings">Onion Rings<br />
+	    <input type="checkbox" name="appetizer[]" value="Fried Mushrooms">Fried Mushrooms<br />
+	    <input type="checkbox" name="appetizer[]" value="Mozzarella Cheese Sticks">Mozzarella Cheese Sticks<br />
+	    <input type="checkbox" name="appetizer[]" value="Spicy Buffalo Wings">Spicy Buffalo Wings<br />
+	    <input type="checkbox" name="appetizer[]" value="Toasted Beef Ravioli">Toasted Beef Ravioli<br />
 	
         <h3>Dinners</h3>
-            <input type="checkbox" name="dinner[]" value="Gyros_Dinner">Gyros Dinner<br />
-            <input type="checkbox" name="dinner[]" value="Souvlaki_Dinner">Souvlaki Dinner<br />
-            <input type="checkbox" name="dinner[]" value="Shrimp_Dinner">Shrimp dinner<br />
-            <input type="checkbox" name="dinner[]" value="Chicken_Strip_Dinner">Chicken Strip Dinner<br />
-            <input type="checkbox" name="dinner[]" value="Spaghetti_Dinner">Spaghetti Dinner<br />
+            <input type="checkbox" name="dinner[]" value="Gyros Dinner">Gyros Dinner<br />
+            <input type="checkbox" name="dinner[]" value="Souvlaki Dinner">Souvlaki Dinner<br />
+            <input type="checkbox" name="dinner[]" value="Shrimp Dinner">Shrimp dinner<br />
+            <input type="checkbox" name="dinner[]" value="Chicken Strip Dinner">Chicken Strip Dinner<br />
+            <input type="checkbox" name="dinner[]" value="Spaghetti Dinner">Spaghetti Dinner<br />
 
 <!--
             <input type="checkbox" name="Fountain_Drinks" value="Fountain_Drinks">Fountain Drinks<br />
@@ -181,15 +181,6 @@ else
 
 if(isset($_POST['submit']))
 {
-	//Deletes all rows from the order table
-	   $query = 'TRUNCATE tonyspizza.orders';
-                $stmt = pg_prepare($conn, "delete_order_table", $query);
-                //sends query to database
-                $result = pg_execute($conn, "delete_order_table", array());
-                //if database doesnt return results print this
-                        if(!$result) {
-                                echo "execute failed" . pg_last_error($conn);
-                        }
 	//retrieves the appropriate info from user_info table
 	 $query = 'SELECT phone_number FROM tonyspizza.user_info WHERE username = $1';
                 $stmt = pg_prepare($conn, "retrieve_user_info", $query);
@@ -225,9 +216,9 @@ if(isset($_POST['submit']))
 		
 	//inserts the current order into the order table
 		$query = 'INSERT INTO tonyspizza.orders (phone_number, crust_size, price, description) VALUES ($1, $2, $3, $4)';
-                $stmt = pg_prepare($conn, "insert_order", $query);
+                $stmt = pg_prepare($conn, "insert_order1", $query);
                 //sends query to database
-                $result = pg_execute($conn, "insert_order", array($phone_number, $csize, $result["cheese_only_price"], 'Cheese Pizza'));
+                $result = pg_execute($conn, "insert_order1", array($phone_number, $csize, $result["cheese_only_price"], 'Cheese Pizza'));
                 //if database doesnt return results print this
                         if(!$result) {
                                 echo "execute failed" . pg_last_error($conn);
@@ -261,9 +252,9 @@ if(isset($_POST['submit']))
 		$tp = $tp + $result["single_topping_price"];
 
                 $query = 'INSERT INTO tonyspizza.orders (phone_number, crust_size, price, description) VALUES ($1, $2, $3, $4)';
-                $stmt = pg_prepare($conn, "insert_order", $query);
+                $stmt = pg_prepare($conn, "insert_order2", $query);
                 //sends query to database
-                $result = pg_execute($conn, "insert_order", array($phone_number, $csize, $result["single_topping_price"], 'Single Topping'));
+                $result = pg_execute($conn, "insert_order2", array($phone_number, $csize, $result["single_topping_price"], 'Single Topping'));
                 //if database doesnt return results print this
                         if(!$result) {
                                 echo "execute failed" . pg_last_error($conn);
@@ -299,9 +290,9 @@ if(isset($_POST['submit']))
 			
 	//inserts the order into the database
 		$query = 'INSERT INTO tonyspizza.orders (phone_number, crust_size, price, description) VALUES ($1, $2, $3, $4)';
-                $stmt = pg_prepare($conn, "insert_order", $query);
+                $stmt = pg_prepare($conn, "insert_order3", $query);
                 //sends query to database
-                $result = pg_execute($conn, "insert_order", array($phone_number, $csize, $custom_pizza_price, 'Custom Pizza'));
+                $result = pg_execute($conn, "insert_order3", array($phone_number, $csize, $custom_pizza_price, 'Custom Pizza'));
                 //if database doesnt return results print this
                         if(!$result) {
                                 echo "execute failed" . pg_last_error($conn);
@@ -346,25 +337,17 @@ if(isset($_POST['submit']))
 		echo $tp . '<br>';
         //inserts the order into the database
                 $query = 'INSERT INTO tonyspizza.orders(phone_number, crust_size, price, description) VALUES ($1, $2, $3, $4)';
-                $stmt = pg_prepare($conn, "insert_order", $query);
+                $stmt = pg_prepare($conn, "insert_order4", $query);
                 //sends query to database
-                $result = pg_execute($conn, "insert_order", array($phone_number, $csize, $result["price"], 'Specialty Pizza'));
+                $result = pg_execute($conn, "insert_order4", array($phone_number, $csize, $result["price"], 'Specialty Pizza'));
                 //if database doesnt return results print this
                         if(!$result) {
                                 echo "execute failed" . pg_last_error($conn);
 			}
 }
-                if(isset($_POST['Onion_Rings']) || ($_POST['Fried_Mushrooms']) || ($_POST['Mozzarello_Cheese_Sticks']) || ($_POST['Spicy_Buffalo_Wings']) || ($_POST['Toasted_Beef_Ravioli'])){
-                        if(isset($_POST['Onion_Rings']))
-                                $name = 'Onion Rings';
-                        if(isset($_POST['Fried_Mushrooms']))
-                                $name = 'Fried Mushrooms';
-                        if(isset($_POST['Mozzarello_Cheese_Sticks']))
-                                $name = 'Mozzarello Cheese Sticks';
-                        if(isset($_POST['Spicy_Buffalo_Wings']))
-                                $name = 'Spicy Buffalo Wings';
-                        if(isset($_POST['Toasted_Beef_Ravioli']))
-                                $name = 'Toasted Beef Ravioli';
+	$count = sizeof($_POST['appetizer']);
+	for($i = 0; $i < $count; $i++){
+                if(isset($_POST['appetizer'])){
 
                 $query = 'SELECT price FROM tonyspizza.appetizers WHERE name = $1';
                 $stmt = pg_prepare($conn, "get_app_price", $query);
@@ -372,7 +355,7 @@ if(isset($_POST['submit']))
                                 echo "execute failed" . pg_last_error($conn);
                         }
                 //sends query to database
-                $result = pg_execute($conn, "get_app_price", array($name));
+                $result = pg_execute($conn, "get_app_price", array($_POST['appetizer'][$i]));
                 //if database doesnt return results print this
                         if(!$result) {
                                 echo "execute failed" . pg_last_error($conn);
@@ -381,39 +364,29 @@ if(isset($_POST['submit']))
 
 	        //calculates the total price of order
                 $tp = $tp + $result["price"];
-                echo $tp . '<br>';
-        //inserts the order into the database
+        	//inserts the order into the database
                 $query = 'INSERT INTO tonyspizza.orders(phone_number, price, description) VALUES ($1, $2, $3)';
-                $stmt = pg_prepare($conn, "insert_order", $query);
+                $stmt = pg_prepare($conn, "insert_order5", $query);
                 //sends query to database
-                $result = pg_execute($conn, "insert_order", array($phone_number, $result["price"], 'App'));
+                $result = pg_execute($conn, "insert_order5", array($phone_number, $result["price"], $_POST['appetizer'][$i]));
                 //if database doesnt return results print this
                         if(!$result) {
                                 echo "execute failed" . pg_last_error($conn);
                         }
-}
+		}
+	}
 	$count = sizeof($_POST['dinner']);
-	echo $count . '<br>';
 	for($i = 0; $i < $count; $i++){
-		if(isset($_POST['Gyros_Dinner']) || ($_POST['Souvlaki_Dinner']) || ($_POST['Shrimp_Dinner']) || ($_POST['Chicken_Strip_Dinner']) || ($_POST['Spaghetti_Dinner'])){
-                        if(isset($_POST['Gyros_Dinner']))
-                                $name = 'Gyros Dinner';
-                        if(isset($_POST['Souvlaki_Dinner']))
-                                $name = 'Souvlaki Dinner';
-                        if(isset($_POST['Shrimp_Dinner']))
-                                $name = 'Shrimp Dinner';
-                        if(isset($_POST['Chicken_Strip_Dinner']))
-                                $name = 'Chicken Strip Dinner';
-                        if(isset($_POST['Spaghetti_Dinner']))
-                                $name = 'Spaghetti Dinner';
+		if(isset($_POST['dinner'])){
 
                 $query = 'SELECT price FROM tonyspizza.dinners WHERE name = $1';
-                $stmt = pg_prepare($conn, "get_app_price", $query);
+                $stmt = pg_prepare($conn, "get_dinner_price", $query);
                         if(!$result) {
                                 echo "execute failed" . pg_last_error($conn);
                         }
+
                 //sends query to database
-                $result = pg_execute($conn, "get_app_price", array($name));
+                $result = pg_execute($conn, "get_dinner_price", array($_POST['dinner'][$i]));
                 //if database doesnt return results print this
                         if(!$result) {
                                 echo "execute failed" . pg_last_error($conn);
@@ -422,29 +395,53 @@ if(isset($_POST['submit']))
 
                 //calculates the total price of order
                 $tp = $tp + $result["price"];
-                echo $tp . '<br>';
-        //inserts the order into the database
+	        //inserts the order into the database
                 $query = 'INSERT INTO tonyspizza.orders(phone_number, price, description) VALUES ($1, $2, $3)';
-                $stmt = pg_prepare($conn, "insert_order", $query);
+                $stmt = pg_prepare($conn, "insert_order6", $query);
                 //sends query to database
-                $result = pg_execute($conn, "insert_order", array($phone_number, $result["price"], $name));
+                $result = pg_execute($conn, "insert_order6", array($phone_number, $result["price"], $_POST['dinner'][$i]));
                 //if database doesnt return results print this
                         if(!$result) {
                                 echo "execute failed" . pg_last_error($conn);
 			}
+		}
 }
-		if($name == 'Gyros Dinner')
-			unset($name);
-		if($name == 'Souvlaki Dinner')
-                        unset($name);
-		if($name == 'Shrimp Dinner')
-                        unset($name);
-		if($name == 'Chicken Strip Dinner')
-                        unset($name);
-		if($name == 'Spaghetti Dinner')
-                        unset($name);
 
-}
-echo "Your total price is " . $tp . '<br>';
+echo "display";
+$query = "SELECT * FROM tonyspizza.orders ORDER BY phone_number;";
+        //function call to print results of query
+
+        $result = pg_query($query) or die("Query failed: " . pg_last_error());
+        //prints amount of rows returned
+        echo "There were <em>" . pg_num_rows($result) . "</em> rows returned\n";
+        echo "<br /><br />\n";
+        echo "<table border=\"1\"\n>";
+
+        //variables for columns and rows
+        $num_fields = pg_num_fields($result);
+        $num_rows = pg_num_rows($result);
+
+        echo "<tr>\n";
+        for($i=0;$i<$num_fields;$i++)
+        {
+                //prints column headings
+                $fieldname = pg_field_name($result,$i);
+                echo "<th>$fieldname</th>\n";
+
+        }
+        echo "</tr>";
+        //loop gathers query data and stores it in result
+        while ($line = pg_fetch_array($result, null, PGSQL_ASSOC)) {
+                echo "<tr>\n";
+                //prints data by the line
+                foreach ($line as $col_value) {
+                        echo "<td>$col_value</td>\n";
+                }
+                echo "</tr>\n";
+        }
+echo "</table>\n";
+//Free result
+pg_free_result($result);
+
 }	
 ?>
