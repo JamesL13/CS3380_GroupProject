@@ -3,7 +3,7 @@
 	session_start();
 	
 	//connect to db
-	include("../../secure/database.php");
+	include("../secure/database.php");
 	$conn = pg_connect(HOST." ".DBNAME." ".USERNAME." ".PASSWORD);
 	
 	$name = $_SESSION['username'];

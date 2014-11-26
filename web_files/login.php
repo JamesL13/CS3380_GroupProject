@@ -52,7 +52,7 @@ if(($_SERVER['HTTPS']!=="on"))
 	if(isset($_POST['submit']))
 	{
 		//connects to database
-		include("../../secure/database.php");
+		include("../secure/database.php");
 		$conn = pg_connect(HOST." ".DBNAME." ".USERNAME." ".PASSWORD);
 		
 		//if button pressed is register
