@@ -92,10 +92,35 @@ if(($_SERVER['HTTPS']!=="on"))
 				if(!$result) {
 					die("Unable to execute: " . pg_last_error($conn));
 				}
+
+        			//retrieves the appropriate info from user_info table
+         			$query = 'SELECT phone_number FROM tonyspizza.user_info WHERE username = $1';
+                		$stmt = pg_prepare($conn, "retrieve_user_info", $query);
+                		//sends query to database
+                		$result = pg_execute($conn, "retrieve_user_info", array($_SESSION['username']));
+                		//if database doesnt return results print this
+                        	if(!$result) {
+                                	echo "execute failed" . pg_last_error($conn);
+                        	}
+                		$result = pg_fetch_array($result,0,PGSQL_ASSOC) or die("Query failed: " . pg_last_error());
+                		$phone_number = $result["phone_number"];
+
+        			//Deletes all rows from the order table
+           			$query = 'DELETE FROM tonyspizza.orders WHERE phone_number = $1';
+                		$stmt = pg_prepare($conn, "delete_user_order_table", $query);
+                		//sends query to database
+                		$result = pg_execute($conn, "delete_user_order_table", array($phone_number));
+                		//if database doesnt return results print this
+				echo "return = " . $return;
+                        	if(!$result) {
+                               	 	echo "execute failed" . pg_last_error($conn);
+                        	}
+				echo $phone_number;
 			}
 			else{
 				//if username/pw is invalid, echo alert box
 				echo "<script type='text/javascript'>window.alert('Invalid login credentials! Try again.')</script>";
+
 			
 			}
 		}	

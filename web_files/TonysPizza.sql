@@ -33,8 +33,8 @@ CREATE TABLE tonyspizza.log (
 
 CREATE INDEX log_log_id_index ON tonyspizza.log (username);
 
-DROP TABLE IF EXISTS tonyspizza.order;
-CREATE TABLE tonyspizza.order (
+DROP TABLE IF EXISTS tonyspizza.orders;
+CREATE TABLE tonyspizza.orders (
 	orderno		SERIAL PRIMARY KEY,
 	phone_number	VARCHAR(20),
 	crust_size	INT,
