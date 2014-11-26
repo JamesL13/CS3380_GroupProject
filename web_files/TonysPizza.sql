@@ -33,6 +33,15 @@ CREATE TABLE tonyspizza.log (
 
 CREATE INDEX log_log_id_index ON tonyspizza.log (username);
 
+DROP TABLE IF EXISTS tonyspizza.order;
+CREATE TABLE tonyspizza.order (
+	orderno		SERIAL PRIMARY KEY,
+	phone_number	VARCHAR(20),
+	crust_size	INT,
+	price		float(4),
+	description	VARCHAR(300)
+);
+
 DROP TABLE IF EXISTS appetizers;
 CREATE TABLE appetizers (
 	id SERIAL PRIMARY KEY,
