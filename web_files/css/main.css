@@ -14,9 +14,46 @@ h1 {
     font-weight: bold;
 }
 
+h2 {
+    color: white;
+}
+
+h3 {
+    color: red;
+}
+
+h4 {
+    color: red;
+}
+
+form {
+    color: white;
+    font-weight: bold;
+}
+
+select {
+    color: black;
+}
+
+input {
+    color: black;
+}
+
 p {
     text-align: center;
+    color: silver;
+}
+
+.Currentorder {
+    width: 370px;
+    height: 500px;
+    left: 70%;
+    position: relative;
+    border-style: solid;
+    border-color: white;
+    top: 150px;
     color: white;
+
 }
 
 .leftHalf {
@@ -59,17 +96,6 @@ a:hover {
   color: #FFFFFF !important;
 }
 
-
-iframe {
-    width: 200px;
-    height: 500px;
-    left: 80%;
-    position: relative;
-    border-style: solid;
-    border-color: white;
-    top: 150px;
-
-}
 
 #Box {
     background-color: white
