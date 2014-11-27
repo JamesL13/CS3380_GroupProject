@@ -31,7 +31,7 @@ if(empty($_SESSION['username'])){
 </head>
 <body>
     <div class="TonysBanner">
-        <img id="TonysImg" src="images/TonysPizza.png" alt="Tonys" height="82px" width="644px">
+        <img id="TonysImg" src="images/TonysPizza.png" alt="Tonys" height="82px" width="644px" align="center">
     </div>
     <div class="col-md-12">
         <nav class="navbar navbar-inverse" role="navigation">
@@ -60,116 +60,15 @@ if(empty($_SESSION['username'])){
             </div><!-- /.container-fluid -->
     </div><!--col-md-12-->
     </nav>
-    <div>
-    <iframe src="CurrentOrder.php">
-
-    </iframe>
-    </div>
-    <div id="OrderBox">
-    <div>
-        <form method="POST" action="Order.php">
-	<h3>Cheese Pizza</h3>
-            <input class="rbuttons" type="radio" name="CSmall" values="CSmall">Small<br />
-            <input class="rbuttons" type="radio" name="CMedium" values="CMedium">Medium<br />
-            <input class="rbuttons" type="radio" name="CLarge" values="CLarge">Large<br />
-
-            <hr ><!--Dividing Line-->
-	<h3>Single Topping Pizza</br>
-	    <input class="rbuttons" type="radio" name="OneTopSmall" values="OneTopSmall">Small<br />
-            <input class="rbuttons" type="radio" name="OneTopMedium" values="OneTopMedium">Medium<br />
-            <input class="rbuttons" type="radio" name="OneTopLarge" values="OneTopLarge">Large<br />
-	<select>
-            <option value="Onions">Onions</option>
-            <option value="Mushrooms">Mushrooms</option>
-            <option value="Canadian_Bacon">Canadian Bacon</option>
-            <option value="Sausage">Sausage</option>
-            <option value="Beef">Beef</option>>
-            <option value="Anchovies">Anchovies</option>>
-            <option value="Pepperoni">Pepperoni</option>>
-            <option value="Bacon">Bacon</option>>
-            <option value="Pepperjack Cheese">Pepperjack Cheese</option>>
-            <option value="Chicken">Chicken</option>>
-            <option value="Black Olive">Black Olive</option>>
-            <option value="Jalapeno">Jalapeno</option>>
-            <option value="Shrimp">Shrimp</option>>
-            <option value="Salami">Salami</option>>
-            <option value="Green_Peppers">Green Peppers</option>>
-            <option value="Pineapple">Pineapple</option>>
-            <option value="Green_Olive">Green Olive</option>>
-            <option value="Gyros_Meat">Gyros Meat</option>>
-	</select>
-            <hr ><!--Dividing Line-->
-
-	<h3>Customize Your Pizza.</h3>
-	    <input class="rbuttons" type="radio" name="CustomSmall" values="CustomSmall">Small<br />
-            <input class="rbuttons" type="radio" name="CustomMedium" values="CustomMedium">Medium<br />
-            <input class="rbuttons" type="radio" name="CustomLarge" values="CustomLarge">Large<br /><br />
+    <div class='Currentorder'>
     
-            <input type="checkbox" name="val[]" value="Onions">Onions<br />
-            <input type="checkbox" name="val[]" value="Mushrooms">Mushrooms<br />
-            <input type="checkbox" name="val[]" value="Canadian_Bacon">Canadian Bacon<br />
-            <input type="checkbox" name="val[]" value="Sausage">Sausage<br />
-            <input type="checkbox" name="val[]" value="Beef">Beef<br />
-            <input type="checkbox" name="val[]" value="Anchovies">Anchovies<br />
-            <input type="checkbox" name="val[]" value="Pepperoni">Pepperoni<br />
-            <input type="checkbox" name="val[]" value="Bacon">Bacon<br />
-            <input type="checkbox" name="val[]" value="Pepperjack Cheese">Pepperjack Cheese<br />
-            <input type="checkbox" name="val[]" value="Chicken">Chicken<br />
-            <input type="checkbox" name="val[]" value="Black Olive">Black Olive<br />
-            <input type="checkbox" name="val[]" value="Jalapeno">Jalapeno<br />
-            <input type="checkbox" name="val[]" value="Shrimp">Shrimp<br />
-            <input type="checkbox" name="val[]" value="Salami">Salami<br />
-            <input type="checkbox" name="val[]" value="Green_Peppers">Green Peppers<br />
-            <input type="checkbox" name="val[]" value="Pineapple">Pineapple<br />
-            <input type="checkbox" name="val[]" value="Green_Olive">Green Olive<br />
-            <input type="checkbox" name="val[]" value="Gyros_Meat">Gyros Meat<br />
-	<hr ><!--Dividing Line-->
-        <h3>Specialty Pizzas</h3>
-	    <input class="rbuttons" type="radio" name="SpecialtySmall" values="SpecialtySmall">Small<br />
-            <input class="rbuttons" type="radio" name="SpecialtyMedium" values="SpecialtyMedium">Medium<br />
-            <input class="rbuttons" type="radio" name="SpeciatlyLarge" values="SpecialtyLarge">Large<br /><br />
-
-            <input type="checkbox" name="Veggie" value="Veggie">Veggie<br />
-            <input type="checkbox" name="Meat_Lovers" value="Meat_Lovers">Meat_Lovers<br />
-            <input type="checkbox" name="Tonys_Special" value="Tonys_Special">Tony's Special<br />
-            <input type="checkbox" name="House_Special" value="House_Special">House Special<br />
-            <input type="checkbox" name="The_Zeus" value="The_Zeus">The Zeus<br />
-
-            <hr><!--Dividing Line-->
-	<h3>Appetizers</h3>
-	    <input type="checkbox" name="appetizer[]" value="Onion Rings">Onion Rings<br />
-	    <input type="checkbox" name="appetizer[]" value="Fried Mushrooms">Fried Mushrooms<br />
-	    <input type="checkbox" name="appetizer[]" value="Mozzarella Cheese Sticks">Mozzarella Cheese Sticks<br />
-	    <input type="checkbox" name="appetizer[]" value="Spicy Buffalo Wings">Spicy Buffalo Wings<br />
-	    <input type="checkbox" name="appetizer[]" value="Toasted Beef Ravioli">Toasted Beef Ravioli<br />
-	
-        <h3>Dinners</h3>
-            <input type="checkbox" name="dinner[]" value="Gyros Dinner">Gyros Dinner<br />
-            <input type="checkbox" name="dinner[]" value="Souvlaki Dinner">Souvlaki Dinner<br />
-            <input type="checkbox" name="dinner[]" value="Shrimp Dinner">Shrimp dinner<br />
-            <input type="checkbox" name="dinner[]" value="Chicken Strip Dinner">Chicken Strip Dinner<br />
-            <input type="checkbox" name="dinner[]" value="Spaghetti Dinner">Spaghetti Dinner<br />
-
-<!--
-            <input type="checkbox" name="Fountain_Drinks" value="Fountain_Drinks">Fountain Drinks<br />
-            <input type="checkbox" name="Soda_Pitcher" value="Soda_Pitcher">Soda Pitcher<br />
-            <input type="checkbox" name="Bottle_Drinks" value="Bottle_Drinks">Bottle Drinks<br />
-
-            <br />-->
-            <input type="submit" name="submit" value="Add to Order" />
-        </form>
-    </div>
-    </div><!--Order Box-->
-</body>
-</html>
-
 <?php
 include "../secure/database.php";
 
 //Connect to Database using my credentials
 $conn = pg_connect(HOST." ".DBNAME." ".USERNAME." ".PASSWORD);
 //$conn = pg_connect("host= dbhost-pgsql.cs.missouri.edu user=cs3380f14grp2 password= 82rLygpv dbname= cs3380f14grp2");
-
+/*
 if (!$conn)
 {
     die('Fail');
@@ -178,7 +77,7 @@ else
 {
     echo "Success" .'<br>';
 }
-
+*/
 if(isset($_POST['submit']))
 {
 	//retrieves the appropriate info from user_info table
@@ -391,7 +290,7 @@ if(isset($_POST['submit']))
                         if(!$result) {
                                 echo "execute failed" . pg_last_error($conn);
                         }
-                $result = pg_fetch_array($result,0,PGSQL_BOTH) or die("Query failed: " . pg_last_error());
+                $result = pg_fetch_array($result,0,PGSQL_BOTH) or die("Query failed: !! " . pg_last_error());
 
                 //calculates the total price of order
                 $tp = $tp + $result["price"];
@@ -407,14 +306,14 @@ if(isset($_POST['submit']))
 		}
 }
 
-echo "display";
+//echo "display";
 $query = "SELECT * FROM tonyspizza.orders WHERE phone_number = '$phone_number' ORDER BY phone_number;";
         //function call to print results of query
 
-        $result = pg_query($query) or die("Query failed: " . pg_last_error());
+        $result = pg_query($query) or die("Query failed: !" . pg_last_error());
         //prints amount of rows returned
-        echo "There were <em>" . pg_num_rows($result) . "</em> rows returned\n";
-        echo "<br /><br />\n";
+        //echo "There were <em>" . pg_num_rows($result) . "</em> rows returned\n";
+        //echo "<br /><br />\n";
         echo "<table border=\"1\"\n>";
 
         //variables for columns and rows
@@ -440,8 +339,111 @@ $query = "SELECT * FROM tonyspizza.orders WHERE phone_number = '$phone_number' O
                 echo "</tr>\n";
         }
 echo "</table>\n";
+$total = pg_query('SELECT SUM(price) FROM orders)');
+echo "Your total price is " . $tp . '<br>';
 //Free result
 pg_free_result($result);
 
 }	
 ?>
+</div><!--Current Order-->
+<div id="OrderBox">
+    <div>
+        <form method="POST" action="Order.php">
+    <h3>Cheese Pizza</h3>
+            <input class="rbuttons" type="radio" name="CSmall" values="CSmall">Small<br />
+            <input class="rbuttons" type="radio" name="CMedium" values="CMedium">Medium<br />
+            <input class="rbuttons" type="radio" name="CLarge" values="CLarge">Large<br />
+
+            <hr ><!--Dividing Line-->
+    <h3>Single Topping Pizza</h3>
+        <input class="rbuttons" type="radio" name="OneTopSmall" values="OneTopSmall">Small<br />
+            <input class="rbuttons" type="radio" name="OneTopMedium" values="OneTopMedium">Medium<br />
+            <input class="rbuttons" type="radio" name="OneTopLarge" values="OneTopLarge">Large<br />
+    <select>
+            <option value="Onions">Onions</option>
+            <option value="Mushrooms">Mushrooms</option>
+            <option value="Canadian_Bacon">Canadian Bacon</option>
+            <option value="Sausage">Sausage</option>
+            <option value="Beef">Beef</option>>
+            <option value="Anchovies">Anchovies</option>>
+            <option value="Pepperoni">Pepperoni</option>>
+            <option value="Bacon">Bacon</option>>
+            <option value="Pepperjack Cheese">Pepperjack Cheese</option>>
+            <option value="Chicken">Chicken</option>>
+            <option value="Black Olive">Black Olive</option>>
+            <option value="Jalapeno">Jalapeno</option>>
+            <option value="Shrimp">Shrimp</option>>
+            <option value="Salami">Salami</option>>
+            <option value="Green_Peppers">Green Peppers</option>>
+            <option value="Pineapple">Pineapple</option>>
+            <option value="Green_Olive">Green Olive</option>>
+            <option value="Gyros_Meat">Gyros Meat</option>>
+    </select>
+            <hr ><!--Dividing Line-->
+
+    <h3>Customize Your Pizza.</h3>
+        <input class="rbuttons" type="radio" name="CustomSmall" values="CustomSmall">Small<br />
+            <input class="rbuttons" type="radio" name="CustomMedium" values="CustomMedium">Medium<br />
+            <input class="rbuttons" type="radio" name="CustomLarge" values="CustomLarge">Large<br /><br />
+    <h4>Toppings</h4>
+            <input type="checkbox" name="val[]" value="Onions">Onions<br />
+            <input type="checkbox" name="val[]" value="Mushrooms">Mushrooms<br />
+            <input type="checkbox" name="val[]" value="Canadian_Bacon">Canadian Bacon<br />
+            <input type="checkbox" name="val[]" value="Sausage">Sausage<br />
+            <input type="checkbox" name="val[]" value="Beef">Beef<br />
+            <input type="checkbox" name="val[]" value="Anchovies">Anchovies<br />
+            <input type="checkbox" name="val[]" value="Pepperoni">Pepperoni<br />
+            <input type="checkbox" name="val[]" value="Bacon">Bacon<br />
+            <input type="checkbox" name="val[]" value="Pepperjack Cheese">Pepperjack Cheese<br />
+            <input type="checkbox" name="val[]" value="Chicken">Chicken<br />
+            <input type="checkbox" name="val[]" value="Black Olive">Black Olive<br />
+            <input type="checkbox" name="val[]" value="Jalapeno">Jalapeno<br />
+            <input type="checkbox" name="val[]" value="Shrimp">Shrimp<br />
+            <input type="checkbox" name="val[]" value="Salami">Salami<br />
+            <input type="checkbox" name="val[]" value="Green_Peppers">Green Peppers<br />
+            <input type="checkbox" name="val[]" value="Pineapple">Pineapple<br />
+            <input type="checkbox" name="val[]" value="Green_Olive">Green Olive<br />
+            <input type="checkbox" name="val[]" value="Gyros_Meat">Gyros Meat<br />
+    <hr ><!--Dividing Line-->
+        <h3>Specialty Pizzas</h3>
+        <input class="rbuttons" type="radio" name="SpecialtySmall" values="SpecialtySmall">Small<br />
+            <input class="rbuttons" type="radio" name="SpecialtyMedium" values="SpecialtyMedium">Medium<br />
+            <input class="rbuttons" type="radio" name="SpeciatlyLarge" values="SpecialtyLarge">Large<br /><br />
+
+            <input type="checkbox" name="Veggie" value="Veggie">Veggie<br />
+            <input type="checkbox" name="Meat_Lovers" value="Meat_Lovers">Meat_Lovers<br />
+            <input type="checkbox" name="Tonys_Special" value="Tonys_Special">Tony's Special<br />
+            <input type="checkbox" name="House_Special" value="House_Special">House Special<br />
+            <input type="checkbox" name="The_Zeus" value="The_Zeus">The Zeus<br />
+
+            <hr><!--Dividing Line-->
+    <h3>Appetizers</h3>
+        <input type="checkbox" name="appetizer[]" value="Onion Rings">Onion Rings<br />
+        <input type="checkbox" name="appetizer[]" value="Fried Mushrooms">Fried Mushrooms<br />
+        <input type="checkbox" name="appetizer[]" value="Mozzarella Cheese Sticks">Mozzarella Cheese Sticks<br />
+        <input type="checkbox" name="appetizer[]" value="Spicy Buffalo Wings">Spicy Buffalo Wings<br />
+        <input type="checkbox" name="appetizer[]" value="Toasted Beef Ravioli">Toasted Beef Ravioli<br />
+    
+    <hr ><!--Dividing Line-->
+
+        <h3>Dinners</h3>
+            <input type="checkbox" name="dinner[]" value="Gyros Dinner">Gyros Dinner<br />
+            <input type="checkbox" name="dinner[]" value="Souvlaki Dinner">Souvlaki Dinner<br />
+            <input type="checkbox" name="dinner[]" value="Shrimp Dinner">Shrimp dinner<br />
+            <input type="checkbox" name="dinner[]" value="Chicken Strip Dinner">Chicken Strip Dinner<br />
+            <input type="checkbox" name="dinner[]" value="Spaghetti Dinner">Spaghetti Dinner<br />
+
+<!--
+            <input type="checkbox" name="Fountain_Drinks" value="Fountain_Drinks">Fountain Drinks<br />
+            <input type="checkbox" name="Soda_Pitcher" value="Soda_Pitcher">Soda Pitcher<br />
+            <input type="checkbox" name="Bottle_Drinks" value="Bottle_Drinks">Bottle Drinks<br />
+-->
+            <br />
+            <input type="submit" name="submit" value="Add to Order" />
+            <br />
+        </form>
+    </div>
+    </div><!--Order Box-->
+</body>
+</html>
