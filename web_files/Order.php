@@ -339,16 +339,11 @@ $query = "SELECT * FROM tonyspizza.orders WHERE phone_number = '$phone_number' O
                 echo "</tr>\n";
         }
 echo "</table>\n";
-<<<<<<< HEAD
-$total = pg_query('SELECT SUM(price) FROM orders)');
-echo "Your total price is " . $tp . '<br>';
-=======
 $result = pg_query("SELECT SUM(price) FROM tonyspizza.orders WHERE phone_number ='$phone_number'");
 $result = pg_fetch_array($result, 0, PGSQL_BOTH);
 $total = $result[0];
 echo pg_last_error();
 echo "Your total price is " . $total . '<br>';
->>>>>>> KyleBranch
 //Free result
 pg_free_result($result);
 
