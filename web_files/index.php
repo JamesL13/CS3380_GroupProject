@@ -32,9 +32,12 @@
 
 </head>
 <body>
-    <div class="TonysBanner">
-		<img id="TonysImg" src="images/TonysPizza.png" alt="Tonys" height="82px" width="644px">
-	</div>
+   <div class="imgbackground">
+        <!--Tonys Banner-->
+        <div class="TonysBanner">
+                 <img id="TonysImg" src="images/TonysPizza.png" alt="Tonys">
+            </div>
+        </div><!--img background-->
     <div class="col-md-12">
     <nav class="navbar navbar-inverse" role="navigation">
         <div class="container-fluid">
