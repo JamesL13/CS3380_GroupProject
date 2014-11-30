@@ -38,11 +38,12 @@ if(($_SERVER['HTTPS']!=="on"))
 </head>
 <body>
 	<form method="POST">
+		<div class="imgbackground">
 		<!--Tonys Banner-->
 		<div class="TonysBanner">
-           	     <img id="TonysImg" src="images/TonysPizza.png" alt="Tonys" height="82px" width="644px">
+           	     <img id="TonysImg" src="images/TonysPizza.png" alt="Tonys">
 	        </div>
-
+	    </div><!--img background-->
 		<!-- Text Input -->
 		<div>
 			<label for="username">Enter User Name:</label>
