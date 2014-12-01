@@ -76,7 +76,7 @@ CREATE TABLE specialtyPizza(
 	name varchar(30) NOT NULL,
 	description varchar(250) default '',
 	pizzaSize int NOT NULL,
-	price float(4) NOT NULL
+	price float(6) NOT NULL
 );
 
 DROP TABLE IF EXISTS dinners;
@@ -84,7 +84,7 @@ CREATE TABLE dinners(
 	id SERIAL PRIMARY KEY,
 	name varchar(30) NOT NULL,
 	description varchar(250) NOT NULL default '',
-	price float(4) NOT NULL
+	price float(6) NOT NULL
 );
 
 DROP TABLE IF EXISTS sandwiches;
@@ -92,14 +92,14 @@ CREATE TABLE sandwiches (
 	id SERIAL PRIMARY KEY,
 	name varchar(30) NOT NULL,
 	description varchar(250) NOT NULL default '',
-	price float(4) NOT NULL
+	price float(6) NOT NULL
 );
 
 DROP TABLE IF EXISTS sides;
 CREATE TABLE sides (
 	id SERIAL PRIMARY KEY,
 	name varchar(30) NOT NULL,
-	price float(4) NOT NULL
+	price float(6) NOT NULL
 );
 
 DROP TABLE IF EXISTS salads;
@@ -108,14 +108,14 @@ CREATE TABLE salads(
 	name varchar(30) NOT NULL,
 	description varchar(250) NOT NULL default '',
 	saladSize varchar(10) NOT NULL,
-	price float(4) NOT NULL
+	price float(6) NOT NULL
 );
 
 DROP TABLE IF EXISTS drinks;
 CREATE TABLE drinks (
 	id SERIAL PRIMARY KEY,
 	name varchar(30) NOT NULL,
-	price float(4) NOT NULL
+	price float(6) NOT NULL
 );
 
 --

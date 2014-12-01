@@ -18,7 +18,7 @@
     <link href='http://fonts.googleapis.com/css?family=Exo+2:400,800' rel='stylesheet' type='text/css'>
 
     <title>Tony's Pizza</title>
-<script type="text/javascript">
+    <script type="text/javascript">
     $(function(){
     $('#slider').panelGallery({
     boxSize:50,
@@ -69,11 +69,11 @@
     <hr />
     <div class="col-md-12">
     <div id="slider">
-        <img src="images/greekpizza.jpg" width="800" height="400">
+        <img src="images/greekpizza.jpg" width="800" height="400" >
         <img src="images/gyros.jpg" width="800" height="400">
         <img src="images/sandwhich.jpg" width="800" height="400">
         <img src="images/greekfood.jpg" width="800" height="400">
-    </div><!--Center-->
+    </div><!--slider-->
         
     </div><!--col-md-12-->
 </body>
