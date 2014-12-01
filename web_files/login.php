@@ -44,6 +44,8 @@ if(($_SERVER['HTTPS']!=="on"))
            	     <img id="TonysImg" src="images/TonysPizza.png" alt="Tonys">
 	        </div>
 	    </div><!--img background-->
+	    
+		<div id="centerform">
 		<!-- Text Input -->
 		<div>
 			<label for="username">Enter User Name:</label>
@@ -63,6 +65,7 @@ if(($_SERVER['HTTPS']!=="on"))
 		</div>
 	</form>
 	<a href="AboutUs.html">Click here for more information about Tony's Pizza</a>
+</div><!--centerform-->
 
 <?php
 	//if submit button is pressed
