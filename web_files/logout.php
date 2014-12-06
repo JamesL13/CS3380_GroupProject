@@ -1,7 +1,9 @@
 <?php
-	//carries session data
-	session_start();
+//carries session data
+session_start();
 	
+if(isset($_SESSION['username']))
+{
 	//connect to db
 	include("../secure/database.php");
 	$conn = pg_connect(HOST." ".DBNAME." ".USERNAME." ".PASSWORD);
@@ -20,7 +22,9 @@
 	
 	//destroys session
 	session_destroy();
-	//navigates to login.php
-	header('Location: login.php');
+}
+
+//navigates to login.php
+header('Location: index.php');
 	
 ?>
