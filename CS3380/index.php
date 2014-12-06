@@ -45,6 +45,23 @@ if(($_SERVER['HTTPS']!=="on"))
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
+    <script type="text/javascript">
+    	$(function(){
+    		$('#slider').panelGallery({
+    			boxSize:50,
+    			boxFadeDuration:1000,
+    			boxTransitionDuration:100,
+    			FX: new Array('fade')
+    			//boxSouthEast','fade','boxRandom','panelZipperDown,true','panelZipperRight,true','panelTeethDown,true','panelTeethRightReveal')
+    		});
+    	});
+    </script>
+    <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.panelgallery-2.0.0.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/ajax.js"></script>
+    <script src="assets/custom.js"></script>
 </head>
     <!--END HEAD SECTION -->
 <body>  
@@ -100,68 +117,101 @@ if(($_SERVER['HTTPS']!=="on"))
       <!--END HEADER SECTION -->
      <!-- BASIC INFO SECTION -->
    <div id="basic-info">
-       <div class="container">
-      <form method="POST">
-                <div class="row main-top-margin text-center">
-                <div class="col-md-8 col-md-offset-2 " >
-                    <h1>Login</h1>
-        <div class="textbox">
-            <label for="username">Enter User Name:</label>
-            <input type="text" id="username" name="username">
+   		<div class="container-fluid">
+<div class="row-fluid">
+<div class="span12">
+    <div class="carousel slide" id="myCarousel">
+        <div class="carousel-inner">
+            <div class="item active">
+                <div class="bannerImage">
+                    <img src="assets/img/food/hot_pizza.jpg" alt="Hot Pizza" style="width: 70%; position: relative; left: 15%;">
+                </div>                                      
+            </div><!-- /Slide1 --> 
+            <div class="item">
+                <div class="bannerImage">
+                    <img src="assets/img/food/gyro_sandwich.jpg" alt="Gyro Sandwich" style="width: 63.5%; position: relative; left: 18%;">
+                </div>                                       
+            </div><!-- /Slide2 -->             
+            <div class="item">
+                <div class="bannerImage">
+                    <img src="assets/img/food/baklava.jpg" alt="Baklava" style="width: 70.3%; position: relative; left: 15%;">
+                </div>                                 
+            </div><!-- /Slide3 --> 
+            <div class="item">
+                <div class="bannerImage">
+                    <img src="assets/img/food/onion_rings.jpg" alt="Onion Rings" style="width: 62.3%; position: relative; left: 19%;">
+                </div>                                 
+            </div><!-- /Slide4 -->                     
         </div>
-        
-        <!-- Password -->
-        <div class = "textbox">
-            <label for="pass">Enter Password:</label>
-            <input type="password" name="pass">
+        <div class="control-box">                            
+            <a data-slide="prev" href="#myCarousel" class="carousel-control left">‹</a>
+            <a data-slide="next" href="#myCarousel" class="carousel-control right">›</a>
+        </div><!-- /.control-box -->                         
+    </div><!-- /#myCarousel -->    
+</div><!-- /.span12 -->          
+</div><!-- /.row --> 
+</div><!-- /.container -->
+   
+		<div class="login-container">
+			<form method="POST">
+                		<div class="col-md-8 col-md-offset-2 " >
+                    		<h1>Login</h1>
+        					<div class="textbox">
+            					<label for="username">Enter User Name:</label>
+            					<input type="text" id="username" name="username">
+        					</div>
+        					<!-- Password -->
+        					<div class = "textbox">
+            					<label for="pass">Enter Password:</label>
+            					<input type="password" name="pass">
+        					</div>
+        					<!-- Submit -->
+        					<div>
+            					<input type="submit" name="submit" value="Submit"/>
+        					</div>
+        					<a href="AboutUs.html">Click here for more information about Tony's Pizza</a>
+        				</div>
+     		</form>
         </div>
-        
-        <!-- Submit -->
-        <div>
-            <input type="submit" name="submit" value="Submit"/>
-        </div>
-     </form>
-    <a href="AboutUs.html">Click here for more information about Tony's Pizza</a>
-        </div>
-        </div>
-
-     <form method="POST">
-         <div class="row main-top-margin text-center">
-         <div class="col-md-8 col-md-offset-2 " >
-         	<h1>Register</h1>
-         <div>
-         	<label for="username">User Name:</label>
-         	<input type="text" id="username" name="username"/>
-         </div>
-         <div>
-                <label for="phoneNumber">Phone Number:</label>
-                <input type="text" id="phone_number" name="phone_number"/>
-         </div>
-
-        <!-- two inputs for pw, used to verify pw is correct when registering -->
-         <div>
-         	<label for="pass">Enter Password:    </label>
-         	<input type="password" name="pass" required/>
-         </div>
-         <div>
-         	<label for="verifyPass">ReEnter Password:    </label>
-         	<input type="password" name="verifyPass" required/>
-         </div>
-        
-        <!-- Submit -->
-        <div>
-            <input type="submit" name="register" value="Register"/>
-        </div>
-    </form>
-   </div>        
+	
+		<div class="registration-container">
+     		<form method="POST">
+         			<div class="col-md-8 col-md-offset-2 " >
+         				<h1>Register</h1>
+         				<div>
+         					<label for="username">User Name:</label>
+         					<input type="text" id="username" name="username"/>
+         				</div>
+         				<div>
+                			<label for="phoneNumber">Phone Number:</label>
+                			<input type="text" id="phone_number" name="phone_number"/>
+         				</div>
+        				<!-- two inputs for pw, used to verify pw is correct when registering -->
+         				<div>
+         					<label for="pass">Enter Password:    </label>
+         					<input type="password" name="pass" required/>
+         				</div>
+         				<div>
+         					<label for="verifyPass">ReEnter Password:    </label>
+         					<input type="password" name="verifyPass" required/>
+         				</div>
+        				<!-- Submit -->
+        				<div>
+            				<input type="submit" name="register" value="Register"/>
+        				</div>
+        			</div>
+    		</form>
+		</div>        
    </div>
     <!--END BASIC INFO SECTION -->
     <!--FOOTER SECTION -->
-    <div id="footer">
-        <div class="row ">
-             CS3380 group 2 | Tony's Pizza Online Ordering
-        </div>
-    </div>  
+    <div class="navbar navbar-inverse navbar-fixed-bottom">
+    	<div id="footer">
+        	<div class="row ">
+             	CS3380 group 2 | Tony's Pizza Online Ordering
+        	</div>
+    	</div>  
+    </div>
      <!--END FOOTER SECTION -->
     <!-- JAVASCRIPT FILES PLACED AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
     <!-- CORE JQUERY LIBRARY -->

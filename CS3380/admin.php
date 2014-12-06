@@ -67,8 +67,8 @@ if(($_SERVER['HTTPS']!=="on"))
                     <li><a href="index.php">HOME</a></li>
                     <li><a href="AboutUs.html">ABOUT US</a></li>
                     <li><a href="Order.php">ORDER</a></li>
-                    <li><a href="admin.php">ADMINISTRATION</a></li>
-                    <li><a href="logout.php">Logout</a></li>
+		    		<li><a href="admin.php">ADMINISTRATION</a></li>
+                    <li><a href="logout.php">LOG OUT</a></li>
                 <!--     <li><a href="pricing.html">PRICING</a></li>
                     <li><a href="founders.html">FOUNDERS</a></li>
                     <li><a href="contact.html">CONTACT</a></li>
@@ -81,8 +81,8 @@ if(($_SERVER['HTTPS']!=="on"))
     <div class="row text-center">
     	<div class="col-md-10 col-md-offset-1 col-sm-12">
         	<h1>
-                	<strong> Welcome Tony's Pizza Employee's!</strong>
-                </h1>
+                <strong> Welcome Tony's Pizza Employee's!</strong>
+            </h1>
                 <br />
                 <h2>Click Below To Easily Make Menu Changes!</h2>
 	</div>
@@ -100,11 +100,13 @@ if(($_SERVER['HTTPS']!=="on"))
 	</div>
 </div>
 <!--FOOTER SECTION -->
-    <div id="footer">
-        <div class="row ">
-             CS3380 group 2 | Tony's Pizza Online Ordering
-        </div>
-    </div>  
+    <div class="navbar navbar-inverse navbar-fixed-bottom">
+    	<div id="footer">
+        	<div class="row ">
+             	CS3380 group 2 | Tony's Pizza Online Ordering
+        	</div>
+    	</div>  
+    </div> 
      <!--END FOOTER SECTION -->
 </body>
 </html> 
