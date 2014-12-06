@@ -6,6 +6,41 @@ SET search_path = TonysPizza, public;
 --
 -- Table structures
 --
+DROP TABLE IF EXISTS tonyspizza.user_info;
+CREATE TABLE tonyspizza.user_info (
+	username 		VARCHAR(30) PRIMARY KEY,
+	registration_date 	TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	phone_number            VARCHAR(20) NOT NULL,
+	description 		VARCHAR(500)
+);
+
+DROP TABLE IF EXISTS tonyspizza.authentication;
+CREATE TABLE tonyspizza.authentication (
+	username 	VARCHAR(30) PRIMARY KEY,
+	password_hash 	CHAR(40) NOT NULL,
+	salt 		CHAR(40) NOT NULL,
+	FOREIGN KEY (username) REFERENCES tonyspizza.user_info(username)
+);
+
+DROP TABLE IF EXISTS tonyspizza.log;
+CREATE TABLE tonyspizza.log (
+	log_id  	SERIAL PRIMARY KEY,
+	username 	VARCHAR(30) NOT NULL REFERENCES tonyspizza.user_info,
+	ip_address 	VARCHAR(15) NOT NULL,
+	log_date 	TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	action 		VARCHAR(50) NOT NULL
+);
+
+CREATE INDEX log_log_id_index ON tonyspizza.log (username);
+
+DROP TABLE IF EXISTS tonyspizza.orders;
+CREATE TABLE tonyspizza.orders (
+	orderno		SERIAL PRIMARY KEY,
+	phone_number	VARCHAR(20),
+	crust_size	INT,
+	price		float(4),
+	description	VARCHAR(300)
+);
 
 DROP TABLE IF EXISTS appetizers;
 CREATE TABLE appetizers (
@@ -25,8 +60,9 @@ DROP TABLE IF EXISTS size_pizza;
 CREATE TABLE size_pizza(
 	id SERIAL PRIMARY KEY,
 	crust_size int NOT NULL,
-	size_price float(6) NOT NULL,
-	topping_price float(4) NOT NULL
+	cheese_only_price float(6) NOT NULL,
+	single_topping_price float(6) NOT NULL,
+	additional_topping_price float(6) NOT NULL
 );
 
 DROP TABLE IF EXISTS toppings;
@@ -40,7 +76,7 @@ CREATE TABLE specialtyPizza(
 	name varchar(30) NOT NULL,
 	description varchar(250) default '',
 	pizzaSize int NOT NULL,
-	price float(4) NOT NULL
+	price float(6) NOT NULL
 );
 
 DROP TABLE IF EXISTS dinners;
@@ -48,7 +84,7 @@ CREATE TABLE dinners(
 	id SERIAL PRIMARY KEY,
 	name varchar(30) NOT NULL,
 	description varchar(250) NOT NULL default '',
-	price float(4) NOT NULL
+	price float(6) NOT NULL
 );
 
 DROP TABLE IF EXISTS sandwiches;
@@ -56,14 +92,14 @@ CREATE TABLE sandwiches (
 	id SERIAL PRIMARY KEY,
 	name varchar(30) NOT NULL,
 	description varchar(250) NOT NULL default '',
-	price float(4) NOT NULL
+	price float(6) NOT NULL
 );
 
 DROP TABLE IF EXISTS sides;
 CREATE TABLE sides (
 	id SERIAL PRIMARY KEY,
 	name varchar(30) NOT NULL,
-	price float(4) NOT NULL
+	price float(6) NOT NULL
 );
 
 DROP TABLE IF EXISTS salads;
@@ -72,14 +108,14 @@ CREATE TABLE salads(
 	name varchar(30) NOT NULL,
 	description varchar(250) NOT NULL default '',
 	saladSize varchar(10) NOT NULL,
-	price float(4) NOT NULL
+	price float(6) NOT NULL
 );
 
 DROP TABLE IF EXISTS drinks;
 CREATE TABLE drinks (
 	id SERIAL PRIMARY KEY,
 	name varchar(30) NOT NULL,
-	price float(4) NOT NULL
+	price float(6) NOT NULL
 );
 
 --
@@ -101,13 +137,14 @@ INSERT INTO crust VALUES (default,'thin crust');
 --
 --INSERT values into size_pizza
 --
-INSERT INTO size_pizza VALUES(default, 10, 10.95, 1.20);
-INSERT INTO size_pizza VALUES(default, 12, 12.65, 1.50);
-INSERT INTO size_pizza VALUES(default, 14, 14.45, 1.75);
+INSERT INTO size_pizza VALUES(default, 10, 9.95, 10.95, 1.20);
+INSERT INTO size_pizza VALUES(default, 12, 10.95, 12.65, 1.50);
+INSERT INTO size_pizza VALUES(default, 14, 11.95, 14.45, 1.75);
 
 --
 --INSERT values into toppings
 --
+
 INSERT INTO toppings VALUES(default, 'onion');
 INSERT INTO toppings VALUES(default, 'mushroom');
 INSERT INTO toppings VALUES(default, 'canadian bacon');

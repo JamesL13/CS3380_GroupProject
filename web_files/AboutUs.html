@@ -1,62 +1,149 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en">
+<!--<![endif]-->
+<!-- HEAD SECTION -->
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/main.css" rel="stylesheet">
-    <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-    <script type="text/javascript" src="js/jquery.panelgallery-2.0.0.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/ajax.js"></script>
-    <link href='http://fonts.googleapis.com/css?family=Exo+2:400,800' rel='stylesheet' type='text/css'>
-    <title>About Us</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!--[if IE]>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <![endif]-->
+   <title>About Us</title>
+    <!--GOOGLE FONT -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <!--BOOTSTRAP MAIN STYLES -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+    <!--FONTAWESOME MAIN STYLE -->
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet" />
+    <!--CUSTOM STYLE -->
+    <link href="assets/css/style.css" rel="stylesheet" />
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
 </head>
-<body>
-
-	<div class="TonysBanner">
-		<img id="TonysImg" src="images/TonysPizzaBanner.png" alt="Tonys" height="82px" width="644px">
-	</div>
-    <div class="col-md-12">
-    <nav class="navbar navbar-inverse" role="navigation">
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
+    <!--END HEAD SECTION -->
+<body>   
+       <!-- NAV SECTION -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href='index.php'>Tony's Pizza</a>
+                <div id="logo">
+                	<a id="logo" href="index.php"><img src="assets/img/TonysPizzaBanner.jpg" alt="Tonys Pizza" style="width: 44%; position: relative;"></a>
+            	</div>
             </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id=".navbar-collapse">
-                <ul class="nav navbar-nav navbar-center">
-                    <li><a href="Order.php">Order Now</a></li>
-                    <li><a href="#">About Us</a></li>
-                </ul>
-                <!--</ul>-->
-            </div> <!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
-	</div><!--col-md-12-->
-</nav>
-<h1>About Us</h1>
-<hr/>
-<h1><b>The Best Local Pizza Restaurant in Missouri!</b></h1>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="index.php">HOME</a></li>
+                    <li><a href="AboutUs.html">ABOUT US</a></li>
+                    <li><a href="Order.php">ORDER</a></li>
+		    		<li><a href="admin.php">ADMINISTRATION</a></li>
+                    <li><a href="logout.php">LOG OUT</a></li>
+              <!--       <li><a href="pricing.html">PRICING</a></li>
+                    <li><a href="founders.html">FOUNDERS</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                --></ul>
+            </div>
+           
+        </div>
+    </div>
+     <!--END NAV SECTION -->
+     
+    <!--ABOUT SECTION -->
+    <div id="found-section" >
+        <div class="container" >
+            <div class="row main-top-margin text-center">
+                <div class="col-md-8 col-md-offset-2 " >
+                    <h1>Who We Are ? </h1>
+                    <h4>
+                       The Best Local Pizza Restaurant in Missouri!
+                    </h4>
+                </div>
+            </div>
+            <!-- ./ Main Heading-->
+             <div class="row main-low-margin  text-center">
+                
+             
+                <div class="col-md-12 col-sm-12 text-justify" >
+                    <h3> Hours of Operation:</h3>
+                    <p>
+                         Lunch, Monday-Friday, 11:00 a.m. - 2:00 p.m. <br> Dinner, Monday-Saturday, 4:00 p.m. - 11:30 p.m. <br> Sunday, 4:00 p.m. - 9:00 p.m
 
-<h1 class="hour"><b>Hours of Operation:</b></h1>
-<h2 class=:hour>Lunch, Monday-Friday, 11:00 a.m. - 2:00 p.m. <br> Dinner, Monday-Saturday, 4:00 p.m. - 11:30 p.m. <br> Sunday, 4:00 p.m. - 9:00 p.m</h2>
-<h2>Call us at (573) 442-3188 or come visit us at 17 N 5th Street 
-Columbia, MO 65201-4418</h2>
-<h2>History</h2>
-<p>Tony's Pizza Palace in Columbia, Missouri, is a neighborhood pizza restaurant that has been serving fresh family favorites, Greek meals, and Italian classics for more than 50 years.</p> 
-<h2>Active Members of the Community</h2>
-<p>Family-owned-and-operated Tony's Pizza Palace is one of the greatest places you will ever find, offering great cuisine and an unbeatable family atmosphere. Our staff treats everyone like a close family member.</p>
-<h2>Old-School Cooking</h2>
-<p>Bringing with them the recipes and the knowledge that would become the backbone of Tony's Pizza Palace, Tony and Asimina Veros came to America in the early '60s looking for a better life. They found it here, and their work and dedication paid off, as their reputation is well-rooted in the community.</p>
-</div>
+                    </p>
+                    <p>
+                         Call us at (573) 442-3188 or come visit us at 17 N 5th Street 
+Columbia, MO 65201-4418
+
+                    </p>
+                </div>
+            </div>
+              <!-- ./ Row Content-->
+            <div class="row main-low-margin text-center">
+             
+              <div class="col-md-4 col-sm-4 text-center" >
+                
+                <h3>History</h3>
+               
+                <p>
+                     Tony's Pizza Palace in Columbia, Missouri, is a neighborhood pizza restaurant that has been serving fresh family favorites, Greek meals, and Italian classics for more than 50 years. 
+                </p>
+            </div>
+            <div class="col-md-4 col-sm-4 text-center" data-scrollreveal="enter bottom and move 100px, wait 0.4s">
+                
+                <h3>Active Members of the Community</h3>
+               
+                <p>
+                     Family-owned-and-operated Tony's Pizza Palace is one of the greatest places you will ever find, offering great cuisine and an unbeatable family atmosphere. Our staff treats everyone like a close family member.
+                </p>
+            </div>
+            <div class="col-md-4 col-sm-4 text-center" data-scrollreveal="enter right and move 100px, wait 0.4s">
+                
+                <h3>Old-School Cooking</h3>
+               
+                <p>
+                    Bringing with them the recipes and the knowledge that would become the backbone of Tony's Pizza Palace, Tony and Asimina Veros came to America in the early '60s looking for a better life. They found it here, and their work and dedication paid off, as their reputation is well-rooted in the community.
+                </p>
+            </div>
+        
+            </div>
+              <!-- ./ Row Content-->
+            
+        </div>
+    </div>
+    <!-- END ABOUT SECTION -->
+   
+   
+ 
+    <!--FOOTER SECTION -->
+    <div id="footer">
+        <div class="container">
+            <div class="row ">
+                 CS3380 group 2 | Tony's Pizza Online Ordering 				
+		
+            </div>
+            
+        </div>
+       
+    </div>  
+    <!--END FOOTER SECTION --> 
+    <!-- JAVASCRIPT FILES PLACED AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
+    <!-- CORE JQUERY LIBRARY -->
+    <script src="assets/js/jquery.js"></script>
+    <!-- CORE BOOTSTRAP LIBRARY -->
+    <script src="assets/js/bootstrap.min.js"></script>
+       <!-- CUSTOM SCRIPT-->
+    <script src="assets/js/custom.js"></script>
 </body>
 </html>
