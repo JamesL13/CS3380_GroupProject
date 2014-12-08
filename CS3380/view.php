@@ -119,7 +119,7 @@ else
                                 echo "<td>$col_value</td>\n";
                                 }
 				echo '<td><strong><a href="edit.php?id=' . $row['id'] . '">Edit</a></strong></td>';
-                                echo '<td><strong><button class="btn btn-danger"><i class="icon-trash icon-white"></i>Delete</button></strong></td>';
+                                echo '<td><strong><a href="delete.php?id=' . $row['id'] .'">Delete</a></strong></td>';
                                 echo "</tr>";
                 }
  

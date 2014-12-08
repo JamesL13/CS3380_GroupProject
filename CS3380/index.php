@@ -1,18 +1,164 @@
 <?php
-
-if(isset($_SESSION['username'])) {
-    header("Location: Order.php");
-        $_SESSION['username'] = $_POST['username'];
-}
-else
-//starts session to carry data
 session_start();
-/*
-if(($_SERVER['HTTPS']!=="on"))
-{ 
-    $redir = "https://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-    header("Location: Order.php");
-}*/
+
+    //if submit button is pressed
+    if(isset($_POST['submit']))
+    {
+        //connects to database
+        include("../secure/database.php");
+        $conn = pg_connect(HOST." ".DBNAME." ".USERNAME." ".PASSWORD);
+         
+            $query = "SELECT salt, password_hash FROM tonyspizza.authentication WHERE username = $1";
+            $stmt = pg_prepare($conn, "find_username", $query);
+            //sends query to database
+            $result = pg_execute($conn, "find_username", array($_POST['username']));
+            //if database doesnt return results print this
+            if(!$result) {
+                die("Unable to execute: " . pg_last_error($conn));
+            }
+            
+            //gets array from query
+            $row = pg_fetch_assoc($result);
+            //re hashes pw user entered with salt stored in db
+            $localhash = sha1($row['salt'] . $_POST['pass']);
+
+	    if($_POST['username'] == 'admin' && $localhash == $row['password_hash']){
+		$_SESSION['username'] = $_POST['username'];
+		header("Location: admin.php");
+
+		$query = "INSERT INTO tonyspizza.log(username, ip_address, action) VALUES ($1, $2, $3)";
+                $stmt = pg_prepare($conn, "log", $query);
+                //sends query to database
+                $result = pg_execute($conn, "log", array($_POST['username'], $_SERVER['REMOTE_ADDR'], "logged in"));
+                //if database doesnt return results print this
+                if(!$result) {
+                    die("Unable to execute: " . pg_last_error($conn));
+                }
+		                    //retrieves the appropriate info from user_info table
+                    $query = 'SELECT phone_number FROM tonyspizza.user_info WHERE username = $1';
+                        $stmt = pg_prepare($conn, "retrieve_user_info", $query);
+                        //sends query to database
+                        $result = pg_execute($conn, "retrieve_user_info", array($_SESSION['username']));
+                        //if database doesnt return results print this
+                            if(!$result) {
+                                    echo "execute failed" . pg_last_error($conn);
+                            }
+                        $result = pg_fetch_array($result,0,PGSQL_ASSOC) or die("Query failed: " . pg_last_error());
+                        $phone_number = $result["phone_number"];
+
+                    //Deletes all rows from the order table
+                    $query = 'DELETE FROM tonyspizza.orders WHERE phone_number = $1';
+                        $stmt = pg_prepare($conn, "delete_user_order_table", $query);
+                        //sends query to database
+                        $result = pg_execute($conn, "delete_user_order_table", array($phone_number));
+                        //if database doesnt return results print this
+                            if(!$result) {
+                                    echo "execute failed" . pg_last_error($conn);
+                            }
+
+            } 
+            //if pw entered and pw stored in db match
+            else if($localhash == $row['password_hash']){
+                //navigate to Order.php
+                $_SESSION['username'] = $_POST['username'];
+                header("Location: Order.php");
+
+                $query = "INSERT INTO tonyspizza.log(username, ip_address, action) VALUES ($1, $2, $3)";
+                $stmt = pg_prepare($conn, "log", $query);
+                //sends query to database
+                $result = pg_execute($conn, "log", array($_POST['username'], $_SERVER['REMOTE_ADDR'], "logged in"));
+                //if database doesnt return results print this
+                if(!$result) {
+                    die("Unable to execute: " . pg_last_error($conn));
+                }
+
+                    //retrieves the appropriate info from user_info table
+                    $query = 'SELECT phone_number FROM tonyspizza.user_info WHERE username = $1';
+                        $stmt = pg_prepare($conn, "retrieve_user_info", $query);
+                        //sends query to database
+                        $result = pg_execute($conn, "retrieve_user_info", array($_SESSION['username']));
+                        //if database doesnt return results print this
+                            if(!$result) {
+                                    echo "execute failed" . pg_last_error($conn);
+                            }
+                        $result = pg_fetch_array($result,0,PGSQL_ASSOC) or die("Query failed: " . pg_last_error());
+                        $phone_number = $result["phone_number"];
+
+                    //Deletes all rows from the order table
+                    $query = 'DELETE FROM tonyspizza.orders WHERE phone_number = $1';
+                        $stmt = pg_prepare($conn, "delete_user_order_table", $query);
+                        //sends query to database
+                        $result = pg_execute($conn, "delete_user_order_table", array($phone_number));
+                        //if database doesnt return results print this
+                            if(!$result) {
+                                    echo "execute failed" . pg_last_error($conn);
+                            }
+
+            }
+            else{
+                //if username/pw is invalid, echo alert box
+                echo "<script type='text/javascript'>window.alert('Invalid login credentials! Try again.')</script>";
+
+            
+            }
+  //      }   
+    }
+
+    //if submit button is pressed
+    if(isset($_POST['register']))
+    {
+        //connects to database
+        include("../secure/database.php");
+        $conn = pg_connect(HOST." ".DBNAME." ".USERNAME." ".PASSWORD);
+    
+        //if two entered passwords match up
+        if($_POST['pass'] == $_POST['verifyPass'])
+        {
+            
+            mt_srand(); // Seed number generator
+            $salt = sha1(rand());//random salted number
+            $pwhash = sha1($salt . $_POST['pass']);//concatenate random number and the password. salt the result
+            
+            //insert the username into user_info first
+            $query = "INSERT INTO tonyspizza.user_info (username, phone_number) VALUES ($1, $2)";
+            $stmt = pg_prepare($conn, "user_info", $query);
+            //sends query to database
+            $result = pg_execute($conn, "user_info", array($_POST['username'], $_POST['phone_number']));
+            //if database doesnt return results print this
+            if(!$result) {
+                 echo "<script type='text/javascript'>window.alert('User Name already exists! Please try again.')</script>";
+                break;
+            }
+            
+            //insert everything into authentication second due to key constraints
+            $query = "INSERT INTO tonyspizza.authentication(username, password_hash, salt) VALUES ($1, $2, $3)";
+            $stmt = pg_prepare($conn, "authentication", $query);
+            //sends query to database
+            $result = pg_execute($conn, "authentication", array($_POST['username'], $pwhash, $salt));
+            //if database doesnt return results print this
+            if(!$result) {
+                echo "<script type='text/javascript'>window.alert('Unable to add credenials')</script>";
+                break;
+            }
+            
+            //log users actions in log table
+            $query = "INSERT INTO tonyspizza.log (username, ip_address, action) VALUES ($1, $2, $3)";
+            $stmt = pg_prepare($conn, "log", $query);
+            //sends query to database
+            $result = pg_execute($conn, "log", array($_POST['username'], $_SERVER['REMOTE_ADDR'], "register"));
+            //if database doesnt return results print this
+            if(!$result) {
+                echo "<script type='text/javascript'>window.alert('Unable to add credenials')</script>";
+                break;
+            }
+            /*echo "<script type='text/javascript'>window.alert('Congrats! You registered! Please sign in now so you can order!')</script>";
+            */header("Location: Order.php");
+        }
+        else
+        {
+            echo "<script type='text/javascript'>window.alert('Passwords Do Not Match')</script>";
+        }
+    }
 ?>
 <!DOCTYPE html>
 <!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
@@ -220,139 +366,6 @@ if(($_SERVER['HTTPS']!=="on"))
     <script src="assets/js/bootstrap.min.js"></script>
            <!-- CUSTOM SCRIPT-->
     <script src="assets/js/custom.js"></script>
-<?php
-    //if submit button is pressed
-    if(isset($_POST['submit']))
-    {
-        //connects to database
-        include("../secure/database.php");
-        $conn = pg_connect(HOST." ".DBNAME." ".USERNAME." ".PASSWORD);
-        
-        //if button pressed is submit
-//        elseif($_POST['submit'] == "Submit")
-  //      {
-            $query = "SELECT salt, password_hash FROM tonyspizza.authentication WHERE username = $1";
-            $stmt = pg_prepare($conn, "find_username", $query);
-            //sends query to database
-            $result = pg_execute($conn, "find_username", array($_POST['username']));
-            //if database doesnt return results print this
-            if(!$result) {
-                die("Unable to execute: " . pg_last_error($conn));
-            }
-            
-            //gets array from query
-            $row = pg_fetch_assoc($result);
-            //re hashes pw user entered with salt stored in db
-            $localhash = sha1($row['salt'] . $_POST['pass']);
-            
-            //if pw entered and pw stored in db match
-            if($localhash == $row['password_hash']){
-                //navigate to Order.php
-                header("Location: Order.php");
-                //echo "<script type='text/javascript'>window.alert('Congrats! You signed in!')</script>";
-                $_SESSION['username'] = $_POST['username'];
-                
-                $query = "INSERT INTO tonyspizza.log(username, ip_address, action) VALUES ($1, $2, $3)";
-                $stmt = pg_prepare($conn, "log", $query);
-                //sends query to database
-                $result = pg_execute($conn, "log", array($_POST['username'], $_SERVER['REMOTE_ADDR'], "logged in"));
-                //if database doesnt return results print this
-                if(!$result) {
-                    die("Unable to execute: " . pg_last_error($conn));
-                }
-
-                    //retrieves the appropriate info from user_info table
-                    $query = 'SELECT phone_number FROM tonyspizza.user_info WHERE username = $1';
-                        $stmt = pg_prepare($conn, "retrieve_user_info", $query);
-                        //sends query to database
-                        $result = pg_execute($conn, "retrieve_user_info", array($_SESSION['username']));
-                        //if database doesnt return results print this
-                            if(!$result) {
-                                    echo "execute failed" . pg_last_error($conn);
-                            }
-                        $result = pg_fetch_array($result,0,PGSQL_ASSOC) or die("Query failed: " . pg_last_error());
-                        $phone_number = $result["phone_number"];
-
-                    //Deletes all rows from the order table
-                    $query = 'DELETE FROM tonyspizza.orders WHERE phone_number = $1';
-                        $stmt = pg_prepare($conn, "delete_user_order_table", $query);
-                        //sends query to database
-                        $result = pg_execute($conn, "delete_user_order_table", array($phone_number));
-                        //if database doesnt return results print this
-                echo "return = " . $return;
-                            if(!$result) {
-                                    echo "execute failed" . pg_last_error($conn);
-                            }
-                echo $phone_number;
-                
-            }
-            else{
-                //if username/pw is invalid, echo alert box
-                echo "<script type='text/javascript'>window.alert('Invalid login credentials! Try again.')</script>";
-
-            
-            }
-  //      }   
-    }
-?>
-<?php
-
-    //if submit button is pressed
-    if(isset($_POST['register']))
-    {
-        //connects to database
-        include("../secure/database.php");
-        $conn = pg_connect(HOST." ".DBNAME." ".USERNAME." ".PASSWORD);
     
-        //if two entered passwords match up
-        if($_POST['pass'] == $_POST['verifyPass'])
-        {
-            
-            mt_srand(); // Seed number generator
-            $salt = sha1(rand());//random salted number
-            $pwhash = sha1($salt . $_POST['pass']);//concatenate random number and the password. salt the result
-            
-            //insert the username into user_info first
-            $query = "INSERT INTO tonyspizza.user_info (username, phone_number) VALUES ($1, $2)";
-            $stmt = pg_prepare($conn, "user_info", $query);
-            //sends query to database
-            $result = pg_execute($conn, "user_info", array($_POST['username'], $_POST['phone_number']));
-            //if database doesnt return results print this
-            if(!$result) {
-                 echo "<script type='text/javascript'>window.alert('User Name already exists! Please try again.')</script>";
-                break;
-            }
-            
-            //insert everything into authentication second due to key constraints
-            $query = "INSERT INTO tonyspizza.authentication(username, password_hash, salt) VALUES ($1, $2, $3)";
-            $stmt = pg_prepare($conn, "authentication", $query);
-            //sends query to database
-            $result = pg_execute($conn, "authentication", array($_POST['username'], $pwhash, $salt));
-            //if database doesnt return results print this
-            if(!$result) {
-                echo "<script type='text/javascript'>window.alert('Unable to add credenials')</script>";
-                break;
-            }
-            
-            //log users actions in log table
-            $query = "INSERT INTO tonyspizza.log (username, ip_address, action) VALUES ($1, $2, $3)";
-            $stmt = pg_prepare($conn, "log", $query);
-            //sends query to database
-            $result = pg_execute($conn, "log", array($_POST['username'], $_SERVER['REMOTE_ADDR'], "register"));
-            //if database doesnt return results print this
-            if(!$result) {
-                echo "<script type='text/javascript'>window.alert('Unable to add credenials')</script>";
-                break;
-            }
-            /*echo "<script type='text/javascript'>window.alert('Congrats! You registered! Please sign in now so you can order!')</script>";
-            */header("Location: Order.php");
-        }
-        else
-        {
-            echo "<script type='text/javascript'>window.alert('Passwords Do Not Match')</script>";
-        }
-    }
-    
-?>
 </body>
 </html>

@@ -402,7 +402,7 @@ $query = "SELECT description as ORDER ,price as PRICE  FROM tonyspizza.orders WH
         {
                 //prints column headings
                 $fieldname = pg_field_name($result,$i);
-                echo "<th><center>$fieldname<center></th>\n";
+                echo "<th><center>$fieldname</center></th>\n";
 
         }
         echo "</tr>";
@@ -459,20 +459,20 @@ pg_free_result($result);
             <option value="Mushrooms">Mushrooms</option>
             <option value="Canadian Bacon">Canadian Bacon</option>
             <option value="Sausage">Sausage</option>
-            <option value="Beef">Beef</option>>
-            <option value="Anchovies">Anchovies</option>>
-            <option value="Pepperoni">Pepperoni</option>>
-            <option value="Bacon">Bacon</option>>
-            <option value="Pepperjack Cheese">Pepperjack Cheese</option>>
-            <option value="Chicken">Chicken</option>>
-            <option value="Black Olive">Black Olive</option>>
-            <option value="Jalapeno">Jalapeno</option>>
-            <option value="Shrimp">Shrimp</option>>
-            <option value="Salami">Salami</option>>
-            <option value="Green Peppers">Green Peppers</option>>
-            <option value="Pineapple">Pineapple</option>>
-            <option value="Green Olive">Green Olive</option>>
-            <option value="Gyros Meat">Gyros Meat</option>>
+            <option value="Beef">Beef</option>
+            <option value="Anchovies">Anchovies</option>
+            <option value="Pepperoni">Pepperoni</option>
+            <option value="Bacon">Bacon</option>
+            <option value="Pepperjack Cheese">Pepperjack Cheese</option>
+            <option value="Chicken">Chicken</option>
+            <option value="Black Olive">Black Olive</option>
+            <option value="Jalapeno">Jalapeno</option>
+            <option value="Shrimp">Shrimp</option>
+            <option value="Salami">Salami</option>
+            <option value="Green Peppers">Green Peppers</option>
+            <option value="Pineapple">Pineapple</option>
+            <option value="Green Olive">Green Olive</option>
+            <option value="Gyros Meat">Gyros Meat</option>
     </select>
                             </p>
                         </div>
@@ -514,7 +514,7 @@ pg_free_result($result);
                             <p>
             <input class="rbuttons" type="radio" name="SpecialtySmall" values="SpecialtySmall">Small<br />
             <input class="rbuttons" type="radio" name="SpecialtyMedium" values="SpecialtyMedium">Medium<br />
-            <input class="rbuttons" type="radio" name="SpeciatlyLarge" values="SpecialtyLarge">Large<br /><br />
+            <input class="rbuttons" type="radio" name="SpecialtyLarge" values="SpecialtyLarge">Large<br /><br />
 
             <input type="checkbox" name="special[]" value="Veggie">Veggie<br />
             <input type="checkbox" name="special[]" value="Meat Lovers">Meat_Lovers<br />
@@ -565,13 +565,13 @@ pg_free_result($result);
    
  
    <!--FOOTER SECTION -->
-    <div class="navbar navbar-inverse navbar-fixed-bottom">
+   <!-- <div class="navbar navbar-inverse navbar-fixed-bottom">
     	<div id="footer">
         	<div class="row ">
              	CS3380 group 2 | Tony's Pizza Online Ordering
         	</div>
     	</div>  
-    </div> 
+    </div>--> 
      <!--END FOOTER SECTION -->
     <!-- JAVASCRIPT FILES PLACED AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
     <!-- CORE JQUERY LIBRARY -->

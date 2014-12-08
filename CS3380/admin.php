@@ -1,9 +1,14 @@
 <?php
-if(isset($_SESSION['username'])) {
-    header("Location: Order.php");
-        $_SESSION['username'] = $_POST['username'];
+//starts session to carry data
+session_start();
+
+if(!isset($_SESSION['username']) || $_SESSION['username']!='admin')
+{
+	header("Location: index.php");
+	echo "<script type='text/javascript'>window.alert('Sorry, you must have special priviledges to view this page.')</script>";
+
+	exit;
 }
-else
 //starts session to carry data
 session_start();
 /*
