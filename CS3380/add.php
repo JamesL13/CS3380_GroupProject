@@ -26,7 +26,7 @@ session_start();
         <![endif]-->
     <title>Tony's Pizza</title>
     <!--GOOGLE FONT -->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <!--BOOTSTRAP MAIN STYLES -->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <!--FONTAWESOME MAIN STYLE -->
@@ -53,7 +53,9 @@ session_start();
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.php">Tony's Pizza</a>
+                <div id="logo">
+                	<a id="logo" href="index.php"><img src="assets/img/TonysPizzaBanner.jpg" alt="Tonys Pizza" style="width: 44%; position: relative;"></a>
+            	</div>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
@@ -61,7 +63,7 @@ session_start();
                     <li><a href="AboutUs.html">ABOUT US</a></li>
                     <li><a href="Order.php">ORDER</a></li>
                     <li><a href="admin.php">ADMINISTRATION</a></li>
-                    <li><a href="logout.php">Logout</a></li>
+                    <li><a href="logout.php">LOG OUT</a></li>
 
                 <!--     <li><a href="pricing.html">PRICING</a></li>
                     <li><a href="founders.html">FOUNDERS</a></li>
@@ -76,7 +78,7 @@ session_start();
 <body>
 <div class="container">
 <div class="row text-center">
-<div class="col-md-10 col-mid-offset-1 col-sm-12">
+<div>
         <h2><strong>Add Item Below!</strong></h2><hr/>
 
         <form class="form-horizontal" action="" method="post">

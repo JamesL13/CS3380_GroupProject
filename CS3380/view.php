@@ -14,7 +14,7 @@ session_start();
         <![endif]-->
     <title>Tony's Pizza</title>
     <!--GOOGLE FONT -->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <!--BOOTSTRAP MAIN STYLES -->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <!--FONTAWESOME MAIN STYLE -->
@@ -43,7 +43,9 @@ session_start();
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.php">Tony's Pizza</a>
+                <div id="logo">
+                	<a id="logo" href="index.php"><img src="assets/img/TonysPizzaBanner.jpg" alt="Tonys Pizza" style="width: 44%; position: relative;"></a>
+            	</div>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
@@ -51,7 +53,7 @@ session_start();
                     <li><a href="AboutUs.html">ABOUT US</a></li>
                     <li><a href="Order.php">ORDER</a></li>
                     <li><a href="admin.php">ADMINISTRATION</a></li>
-                    <li><a href="logout.php">Logout</a></li>
+                    <li><a href="logout.php">LOG OUT</a></li>
                 <!--     <li><a href="pricing.html">PRICING</a></li>
                     <li><a href="founders.html">FOUNDERS</a></li>
                     <li><a href="contact.html">CONTACT</a></li>
@@ -152,7 +154,7 @@ else
  }*/
 
 ?>
-<h3><strong><a href="add.php">Click here to add an item to the database!</a></strong></h3>
-<h3><strong><a href="admin.php">Click here to go back to administration Page</a></strong></h3>
+<h3><strong><a href="add.php" class="btn">Add an item</a></strong></h3>
+<h3><strong><a href="admin.php" class="btn">Administration Page</a></strong></h3>
 </body>
 </html>               

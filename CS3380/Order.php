@@ -28,7 +28,7 @@ if(empty($_SESSION['username'])){
         <![endif]-->
     <title>Order</title>
     <!--GOOGLE FONT -->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <!--BOOTSTRAP MAIN STYLES -->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <!--FONTAWESOME MAIN STYLE -->
@@ -52,7 +52,9 @@ if(empty($_SESSION['username'])){
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Tony's Pizza</a>
+                <div id="logo">
+                	<a id="logo" href="index.php"><img src="assets/img/TonysPizzaBanner.jpg" alt="Tonys Pizza" style="width: 44%; position: relative;"></a>
+            	</div>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
@@ -427,151 +429,152 @@ pg_free_result($result);
 }   
 ?>
 </div>
-            </div>
-            <!-- ./ Main Heading-->
-<form method="POST" action="Order.php">
-
-
-                 <div class="row main-low-margin text-center"> 
-                <div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 ">
-                    <div class="col-md-4 col-sm-6" >
-                        <div class="text-center">
-                            
-                            <h4>Cheese Pizza</h4>
-                            <p>
-            <input class="rbuttons" type="radio" name="CSmall" values="CSmall">Small<br />
-            <input class="rbuttons" type="radio" name="CMedium" values="CMedium">Medium<br />
-            <input class="rbuttons" type="radio" name="CLarge" values="CLarge">Large<br />
-                            </p>
-                        </div>
+	</div>
+        <!-- ./ Main Heading-->
+		<form method="POST" action="Order.php">
+		<div class="row main-low-margin text-left"> 
+            <div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 ">
+            
+        	<!--===========REGULAR CHEESE PIZZA==============-->
+        		<div class="cheese_pizza" >
+                    <div class="text-left">
+                        <h4>Cheese Pizza</h4>
+            			<input class="rbuttons" type="radio" name="CSmall" values="CSmall"> Small<br />
+            			<input class="rbuttons" type="radio" name="CMedium" values="CMedium"> Medium<br />
+            			<input class="rbuttons" type="radio" name="CLarge" values="CLarge"> Large<br />
                     </div>
-                    <div class="col-md-4 col-sm-6"  >
-                        <div class="text-center">
-                            
-                            <h4>Single Topping Pizza</h4>
-                            <p>
-            <input class="rbuttons" type="radio" name="OneTopSmall" values="OneTopSmall">Small<br />
-            <input class="rbuttons" type="radio" name="OneTopMedium" values="OneTopMedium">Medium<br />
-            <input class="rbuttons" type="radio" name="OneTopLarge" values="OneTopLarge">Large<br />
-    <select name="SToppingDROP">
-	    <option value="">Select...</option>
-            <option value="Onions">Onions</option>
-            <option value="Mushrooms">Mushrooms</option>
-            <option value="Canadian Bacon">Canadian Bacon</option>
-            <option value="Sausage">Sausage</option>
-            <option value="Beef">Beef</option>
-            <option value="Anchovies">Anchovies</option>
-            <option value="Pepperoni">Pepperoni</option>
-            <option value="Bacon">Bacon</option>
-            <option value="Pepperjack Cheese">Pepperjack Cheese</option>
-            <option value="Chicken">Chicken</option>
-            <option value="Black Olive">Black Olive</option>
-            <option value="Jalapeno">Jalapeno</option>
-            <option value="Shrimp">Shrimp</option>
-            <option value="Salami">Salami</option>
-            <option value="Green Peppers">Green Peppers</option>
-            <option value="Pineapple">Pineapple</option>
-            <option value="Green Olive">Green Olive</option>
-            <option value="Gyros Meat">Gyros Meat</option>
-    </select>
-                            </p>
-                        </div>
+                </div>
+            <!--==============END OF CHEESE PIZZA=========================-->
+            <!--==============BEGIN CHEESE PIZZA SINGLE TOPPING===========-->
+                <div class="cheese_pizza_single_topping"  >
+                    <div class="text-left">
+                        <h4>Single Topping Pizza</h4>
+            				<input class="rbuttons" type="radio" name="OneTopSmall" values="OneTopSmall"> Small<br />
+            				<input class="rbuttons" type="radio" name="OneTopMedium" values="OneTopMedium"> Medium<br />
+            				<input class="rbuttons" type="radio" name="OneTopLarge" values="OneTopLarge"> Large<br />
+    						<select name="SToppingDROP">
+	    						<option value="">Select...</option>
+            					<option value="Onions">Onions</option>
+            					<option value="Mushrooms">Mushrooms</option>
+            					<option value="Canadian Bacon">Canadian Bacon</option>
+           						<option value="Sausage">Sausage</option>
+            					<option value="Beef">Beef</option>
+            					<option value="Anchovies">Anchovies</option>
+            					<option value="Pepperoni">Pepperoni</option>
+            					<option value="Bacon">Bacon</option>
+            					<option value="Pepperjack Cheese">Pepperjack Cheese</option>
+            					<option value="Chicken">Chicken</option>
+            					<option value="Black Olive">Black Olive</option>
+            					<option value="Jalapeno">Jalapeno</option>
+            					<option value="Shrimp">Shrimp</option>
+            					<option value="Salami">Salami</option>
+            					<option value="Green Peppers">Green Peppers</option>
+            					<option value="Pineapple">Pineapple</option>
+            					<option value="Green Olive">Green Olive</option>
+            					<option value="Gyros Meat">Gyros Meat</option>
+    						</select>
                     </div>
-                    <div class="col-md-4 col-sm-6" >
-                        <div class="text-center">
-                           
-                            <h4>Customize Your Pizza.</h4>
-                            <p>
-            <input class="rbuttons" type="radio" name="CustomSmall" values="CustomSmall">Small<br />
-            <input class="rbuttons" type="radio" name="CustomMedium" values="CustomMedium">Medium<br />
-            <input class="rbuttons" type="radio" name="CustomLarge" values="CustomLarge">Large<br /><br />
-    <h5>Toppings</h5>
-            <input type="checkbox" name="val[]" value="Onions">Onions<br />
-            <input type="checkbox" name="val[]" value="Mushrooms">Mushrooms<br />
-            <input type="checkbox" name="val[]" value="Canadian Bacon">Canadian Bacon<br />
-            <input type="checkbox" name="val[]" value="Sausage">Sausage<br />
-            <input type="checkbox" name="val[]" value="Beef">Beef<br />
-            <input type="checkbox" name="val[]" value="Anchovies">Anchovies<br />
-            <input type="checkbox" name="val[]" value="Pepperoni">Pepperoni<br />
-            <input type="checkbox" name="val[]" value="Bacon">Bacon<br />
-            <input type="checkbox" name="val[]" value="Pepperjack Cheese">Pepperjack Cheese<br />
-            <input type="checkbox" name="val[]" value="Chicken">Chicken<br />
-            <input type="checkbox" name="val[]" value="Black Olive">Black Olive<br />
-            <input type="checkbox" name="val[]" value="Jalapeno">Jalapeno<br />
-            <input type="checkbox" name="val[]" value="Shrimp">Shrimp<br />
-            <input type="checkbox" name="val[]" value="Salami">Salami<br />
-            <input type="checkbox" name="val[]" value="Green Peppers">Green Peppers<br />
-            <input type="checkbox" name="val[]" value="Pineapple">Pineapple<br />
-            <input type="checkbox" name="val[]" value="Green Olive">Green Olive<br />
-            <input type="checkbox" name="val[]" value="Gyros Meat">Gyros Meat<br />
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6" >
-                        <div class="text-center">
-                           
-                            <h4>Specialty Pizzas</h4>
-                            <p>
-            <input class="rbuttons" type="radio" name="SpecialtySmall" values="SpecialtySmall">Small<br />
-            <input class="rbuttons" type="radio" name="SpecialtyMedium" values="SpecialtyMedium">Medium<br />
-            <input class="rbuttons" type="radio" name="SpecialtyLarge" values="SpecialtyLarge">Large<br /><br />
-
-            <input type="checkbox" name="special[]" value="Veggie">Veggie<br />
-            <input type="checkbox" name="special[]" value="Meat Lovers">Meat_Lovers<br />
-            <input type="checkbox" name="special[]" value="Tonys Special">Tony's Special<br />
-            <input type="checkbox" name="special[]" value="House Special">House Special<br />
-            <input type="checkbox" name="special[]" value="The Zeus">The Zeus<br />
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6" >
-                        <div class="text-center">
-                            
-                            <h4>Appetizers</h4>
-                            <p>
-        <input type="checkbox" name="appetizer[]" value="Onion Rings">Onion Rings<br />
-        <input type="checkbox" name="appetizer[]" value="Fried Mushrooms">Fried Mushrooms<br />
-        <input type="checkbox" name="appetizer[]" value="Mozzarella Cheese Sticks">Mozzarella Cheese Sticks<br />
-        <input type="checkbox" name="appetizer[]" value="Spicy Buffalo Wings">Spicy Buffalo Wings<br />
-        <input type="checkbox" name="appetizer[]" value="Toasted Beef Ravioli">Toasted Beef Ravioli<br />
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6" >
-                        <div class="text-center">
-                            
-                            <h4>Dinners</h4>
-                            <p>
-            <input type="checkbox" name="dinner[]" value="Gyros Dinner">Gyros Dinner<br />
-            <input type="checkbox" name="dinner[]" value="Souvlaki Dinner">Souvlaki Dinner<br />
-            <input type="checkbox" name="dinner[]" value="Shrimp Dinner">Shrimp dinner<br />
-            <input type="checkbox" name="dinner[]" value="Chicken Strip Dinner">Chicken Strip Dinner<br />
-            <input type="checkbox" name="dinner[]" value="Spaghetti Dinner">Spaghetti Dinner<br />
-                            </p>
+                </div>
+                <!--==============END OF CHEESE PIZZA SINGLE TOPPING=========================-->
+                <!--==============BEGIN CUSTOM PIZZA==================-->
+            	<div class="custom_pizza" >
+                    <div class="text-left">
+                    	<h4>Customize Your Pizza</h4>
+						<div class = "toppings">
+            				<input class="rbuttons" type="radio" name="CustomSmall" values="CustomSmall"> Small<br />
+            				<input class="rbuttons" type="radio" name="CustomMedium" values="CustomMedium"> Medium<br />
+            				<input class="rbuttons" type="radio" name="CustomLarge" values="CustomLarge"> Large<br />
+    						<h4>Toppings</h4>
+            				<input type="checkbox" name="val[]" value="Onions"> Onions<br />
+            				<input type="checkbox" name="val[]" value="Mushrooms"> Mushrooms<br />
+            				<input type="checkbox" name="val[]" value="Canadian Bacon"> Canadian Bacon<br />
+            				<input type="checkbox" name="val[]" value="Sausage"> Sausage<br />
+            				<input type="checkbox" name="val[]" value="Beef"> Beef<br />
+            				<input type="checkbox" name="val[]" value="Anchovies"> Anchovies<br />
+            				<input type="checkbox" name="val[]" value="Pepperoni"> Pepperoni<br />
+            				<input type="checkbox" name="val[]" value="Bacon"> Bacon<br />
+            				<input type="checkbox" name="val[]" value="Pepperjack Cheese"> Pepperjack Cheese<br />
+            				<input type="checkbox" name="val[]" value="Chicken"> Chicken<br />
+            				<input type="checkbox" name="val[]" value="Black Olive"> Black Olive<br />
+            				<input type="checkbox" name="val[]" value="Jalapeno"> Jalapeno<br />
+            				<input type="checkbox" name="val[]" value="Shrimp"> Shrimp<br />
+            				<input type="checkbox" name="val[]" value="Salami"> Salami<br />
+            				<input type="checkbox" name="val[]" value="Green Peppers"> Green Peppers<br />
+            				<input type="checkbox" name="val[]" value="Pineapple"> Pineapple<br />
+            				<input type="checkbox" name="val[]" value="Green Olive"> Green Olive<br />
+            				<input type="checkbox" name="val[]" value="Gyros Meat"> Gyros Meat<br />
                         </div>
                     </div>
                 </div>
-                     </div>
-                <!-- ./ Content div-->
-               <br />
-            <input type="submit" name="submit" value="Add to Order" />
-            <input type="submit" name="clear" value="Clear Order" />
-            <br />
-   </form>
+                <!--==============END OF CUSTOM PIZZA=========================-->
+                <!--==============BEGIN SPECIALTY PIZZA==================-->
+                <div class="specialty_pizza" >
+                	<div class="text-left">
+                    	<h4>Specialty Pizzas</h4>
+        				
+            				<input class="rbuttons" type="radio" name="SpecialtySmall" values="SpecialtySmall"> Small<br />
+            				<input class="rbuttons" type="radio" name="SpecialtyMedium" values="SpecialtyMedium"> Medium<br />
+            				<input class="rbuttons" type="radio" name="SpecialtyLarge" values="SpecialtyLarge"> Large<br /><br />
+
+            				<input type="checkbox" name="special[]" value="Veggie"> Veggie<br />
+            				<input type="checkbox" name="special[]" value="Meat Lovers"> Meat_Lovers<br />
+            				<input type="checkbox" name="special[]" value="Tonys Special"> Tony's Special<br />
+            				<input type="checkbox" name="special[]" value="House Special"> House Special<br />
+            				<input type="checkbox" name="special[]" value="The Zeus"> The Zeus<br />
+                            
+                    </div>
+                </div>
+                <!--==============END OF SPECIALTY PIZZA=========================-->
+                <!--==============BEGIN APPETIZERS==================-->
+                <div class="appetizers" >
+                	<div class="text-left">
+                    	<h4>Appetizers</h4>
+        		
+        					<input type="checkbox" name="appetizer[]" value="Onion Rings"> Onion Rings<br />
+        					<input type="checkbox" name="appetizer[]" value="Fried Mushrooms"> Fried Mushrooms<br />
+        					<input type="checkbox" name="appetizer[]" value="Mozzarella Cheese Sticks"> Mozzarella Cheese Sticks<br />
+        					<input type="checkbox" name="appetizer[]" value="Spicy Buffalo Wings"> Spicy Buffalo Wings<br />
+        					<input type="checkbox" name="appetizer[]" value="Toasted Beef Ravioli"> Toasted Beef Ravioli<br />
+                        
+                    </div>
+                </div>
+                <!--==============END OF APPETIZERS=========================-->
+                <!--==============BEGIN DINNERS==================-->
+                <div class="dinners" >
+                    <div class="text-left">
+                        <h4>Dinners</h4>
+                        
+            				<input type="checkbox" name="dinner[]" value="Gyros Dinner"> Gyros Dinner<br />
+            				<input type="checkbox" name="dinner[]" value="Souvlaki Dinner"> Souvlaki Dinner<br />
+            				<input type="checkbox" name="dinner[]" value="Shrimp Dinner"> Shrimp dinner<br />
+            				<input type="checkbox" name="dinner[]" value="Chicken Strip Dinner"> Chicken Strip Dinner<br />
+            				<input type="checkbox" name="dinner[]" value="Spaghetti Dinner"> Spaghetti Dinner<br />
+                        
+                    </div>
+                </div>
+                <!--==============END OF DINNERS=========================-->
             </div>
-         </div>
-          </div>
+        </div>
+                <!-- ./ Content div-->
+        	<br />
+        		<input class="button-position" type="submit" name="submit" value="Add to Order" />
+            	<input class = "button-position" type="submit" name="clear" value="Clear Order" />
+        	<br />
+   			</form>
+            	</div>
+         	</div>
+        </div>
     <!-- END SERVICES SECTION -->
    
  
    <!--FOOTER SECTION -->
-   <!-- <div class="navbar navbar-inverse navbar-fixed-bottom">
+	<div class="navbar navbar-inverse navbar-fixed-bottom">
     	<div id="footer">
         	<div class="row ">
-             	CS3380 group 2 | Tony's Pizza Online Ordering
+             	CS3380 Group 2 | Tony's Pizza Online Ordering
         	</div>
     	</div>  
-    </div>--> 
+    </div>
      <!--END FOOTER SECTION -->
     <!-- JAVASCRIPT FILES PLACED AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
     <!-- CORE JQUERY LIBRARY -->
